@@ -17,7 +17,7 @@
 
 body {
     background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
-                url('media/portfolio.png') center/cover no-repeat fixed;
+    url('/media/portfolio.png') center/cover no-repeat fixed;
     color: var(--text-main);
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
