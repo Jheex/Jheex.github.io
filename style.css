@@ -1,40 +1,300 @@
-html{
-    background-color: dimgray;
-    height: 100%;
+/* --- CONFIGURAÇÕES GERAIS E VARIÁVEIS --- */
+:root {
+    --primary: #ff4d4d;          /* Vermelho moderno */
+    --primary-glow: rgba(255, 77, 77, 0.4);
+    --bg-overlay: rgba(0, 0, 0, 0.85);
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+    --text-main: #ffffff;
+    --text-dim: #bbbbbb;
 }
 
-a{
-    text-decoration: none ;
-}
-
-nav{
-    background: rgb(255, 255, 255);
-    height: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    text-align: end;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-    padding: auto;
-    font-size: 15px;
-    text-decoration: none;
-    padding-right: 15px;
-}
-
-.titulo{
-    margin-right: auto;
-    font-weight: bold;
-    padding-left: 15px;
-}
-
-body{
-    color: rgb(0, 0, 0);
+* {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho da caixa */
 }
 
-.perfil{
+body {
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                url('media/portfolio.png') center/cover no-repeat fixed;
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+}
+
+/* --- NAVEGAÇÃO (FLEXBOX) --- */
+.navbar {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between; /* Empurra logo pra esquerda e links pra direita */
+    align-items: center;            /* Alinha tudo verticalmente no centro */
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* --- EFEITO GLASSMORPHISM (O CARD GERAL) --- */
+.card-glass {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* --- SEÇÃO HERO (PERFIL) --- */
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    /* Efeito de degradê no texto */
+    background: linear-gradient(to right, #ffffff, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Espaço entre os botões */
+}
+
+/* --- BOTÕES --- */
+.btn-primary, .btn-secondary, .btn-card {
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--primary);
     color: white;
-    margin-left: 10px;
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--primary-glow);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--border);
+}
+
+/* --- GRID DE PROJETOS (RESPONSIVO) --- */
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.projects-grid {
+    display: grid;
+    /* Cria colunas automáticas que se ajustam ao tamanho da tela */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.card-project {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-project:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.icon {
+    font-size: 2.5rem;
+}
+
+.btn-card {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-size: 0.8rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-card:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* --- LINHA DO TEMPO (XP) --- */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.xp-item {
+    border-left: 2px solid var(--primary);
+    padding-left: 1.5rem;
+}
+
+.xp-item h4 {
+    color: var(--primary);
+}
+
+.xp-item span {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+/* Esconde o elemento */
+.hidden {
+    display: none !important;
+}
+
+/* Estilo especial para o link de Admin aparecer com destaque */
+.admin-style {
+    color: #ff4d4d !important; /* Amarelo para destacar */
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Botão Flutuante de Adicionar */
+#add-project-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+    display: none; /* Escondido por padrão */
+    z-index: 2000;
+}
+
+/* Quando o body tiver a classe admin-mode, o botão aparece */
+body.admin-mode #add-project-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botão de Excluir dentro do Card */
+.delete-project {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+body.admin-mode .delete-project {
+    display: block;
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Esconde links no mobile para não amontoar */
+    }
+    
+    .nav-container {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .card-glass {
+        padding: 1.5rem;
+    }
+
+    .hero-btns {
+        flex-direction: column; /* Botões um em cima do outro no celular */
+    }
 }

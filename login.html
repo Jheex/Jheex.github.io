@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Restrito | Admin</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        /* Estilos específicos para centralizar o formulário na tela toda */
+        .login-wrapper {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-box {
+            max-width: 400px;
+            width: 90%;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            outline: none;
+        }
+        input:focus { border-color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="card-glass login-box">
+            <h2 class="logo">&lt;ADMIN<span>LOGIN</span>&gt;</h2>
+            <p style="margin-top: 10px; color: #888;">Insira a credencial de acesso</p>
+            
+            <input type="password" id="passInput" placeholder="Digite a Senha Mestra">
+            
+            <button onclick="validarAcesso()" class="btn-primary" style="width: 100%;">ENTRAR NO SISTEMA</button>
+            <p id="erro" style="color: #ff4d4d; margin-top: 15px; display: none;">Acesso Negado. Senha Incorreta.</p>
+        </div>
+    </div>
+
+    <script>
+        function validarAcesso() {
+            const senha = document.getElementById('passInput').value;
+            const erroMsg = document.getElementById('erro');
+
+            // Define sua senha aqui
+            if (senha === "fiap2024") { 
+                // Salva que você está logado no navegador
+                localStorage.setItem("adminLogado", "true");
+                window.location.href = "index.html"; // Volta para o site principal
+            } else {
+                erroMsg.style.display = "block";
+                document.getElementById('passInput').value = "";
+            }
+        }
+    </script>
+</body>
+</html>

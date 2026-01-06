@@ -1,30 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio</title>
+    <title>Jhonatan Lima | Portfolio Engine</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <nav>
-         <a class="titulo" href="index.html">Portfólio</a>
-         <a href="sobremim.html">Sobre mim</a>
-         <a href="projetos.html">Projetos</a>
-         <a href="contato.html">Contato</a>
-         <a href="habilidades.html">Habilidades</a>
-         <a href="experiencias.html">Experiências</a>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>&lt;</span>JHONATANLIMA<span id="easter-egg-btn" style="cursor: pointer;">&gt;</span>
+            </a>
+            
+            <div class="nav-links" id="nav-menu">
+                <a href="#perfil">Perfil</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#experiencia">Experiência</a>
+                <a href="#contato">Contato</a>
+                <a href="login.html" id="admin-link" class="admin-style hidden">Admin</a>
+            </div>
+        </div>
     </nav>
 
-    <div class="perfil">
-        <h1>>Jhonatan Lima</h1>
+    <main class="main-content">
+        <section id="perfil" class="hero card-glass">
+            <h1 id="edit-title" contenteditable="false">Desenvolvedor & Cientista de Dados</h1>
+            <p id="edit-bio" contenteditable="false">Olá, eu sou <strong>Jhonatan Lima Coelho</strong>. Graduado em ADS pela UNIP e mergulhando em Ciência de Dados pela FIAP.</p>
+            <div class="hero-btns">
+                <button class="btn-primary">Baixar Currículo</button>
+                <button class="btn-secondary">Saber Mais</button>
+            </div>
+        </section>
 
-        <h3>Olá, eu sou Jhonatan Lima Coelho, graduado em Análise e Desenvolvimento de Sistemas e estudante de Ciência de Dados.</h3>
-        <h2>Meu perfil</h2>
+        <section id="projetos">
+            <h2 class="section-title">Meus Projetos</h2>
+            <div class="projects-grid" id="grid-projetos">
+                <div class="card-project">
+                    <div class="icon">🐍</div>
+                    <h3>Python</h3>
+                    <p>Análise de dados e automação de processos.</p>
+                    <button class="btn-card">Visualizar</button>
+                </div>
+                <div class="card-project">
+                    <div class="icon">☕</div>
+                    <h3>Java</h3>
+                    <p>Desenvolvimento de sistemas robustos e escaláveis.</p>
+                    <button class="btn-card">Visualizar</button>
+                </div>
+            </div>
+        </section>
 
-        <h3>texto gigante aaa</h3>
-    </div>
+        <section id="experiencia" class="card-glass">
+            <h2 class="section-title">Jornada Profissional</h2>
+            <div class="timeline" id="edit-timeline" contenteditable="false">
+                <div class="xp-item">
+                    <h4>Anidrol - Estagiário de TI</h4>
+                    <span>2023 - 2024</span>
+                    <p>Desenvolvimento e suporte técnico especializado.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <script src="./script.js"></script>
 </body>
 </html>
