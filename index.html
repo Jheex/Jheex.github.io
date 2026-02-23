@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jheex | Analista de Sistemas e Dados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-principal: #0b1120;
+            --card-bg: #111a2e;
+            --azul-destaque: #38bdf8;
+            --verde-sucesso: #10b981;
+            --laranja-alerta: #f59e0b;
+        }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-principal); 
+            color: #f1f5f9;
+        }
+        .secao-titulo {
+            letter-spacing: -0.02em;
+        }
+        .card-projeto {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .card-projeto:hover {
+            border-color: var(--azul-destaque);
+            transform: translateY(-5px);
+        }
+        .indicador {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="border-b border-white/5 bg-[#0b1120]/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-xl font-extrabold tracking-tighter">
+                JHEEX<span class="text-sky-500">.</span>
+            </div>
+            <div class="hidden md:flex gap-10 text-sm font-semibold text-slate-400">
+                <a href="#sistemas" class="hover:text-white transition">Sistemas</a>
+                <a href="#dados" class="hover:text-white transition">Dados</a>
+                <a href="#aprendizado" class="hover:text-white transition">Laboratório</a>
+            </div>
+            <a href="mailto:contato@jheex.com.br" class="bg-white text-slate-900 px-5 py-2 rounded-full text-sm font-bold hover:bg-sky-400 transition">
+                Contato
+            </a>
+        </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-6 py-24 border-b border-white/5">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white secao-titulo mb-8">
+                Arquitetura de Sistemas e <span class="text-sky-500">Inteligência de Dados.</span>
+            </h1>
+            <p class="text-slate-400 text-xl leading-relaxed mb-10">
+                Analista focado em converter desafios complexos em soluções digitais eficientes. Especialista em desenvolvimento web e análise estatística de alta performance.
+            </p>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center">
+                    <span class="indicador" style="background: var(--verde-sucesso); box-shadow: 0 0 10px var(--verde-sucesso);"></span>
+                    <span class="text-sm font-bold text-emerald-500">Disponível para Projetos</span>
+                </div>
+                <div class="h-4 w-px bg-slate-800"></div>
+                <div class="flex gap-4">
+                    <a href="https://github.com/Jheex" target="_blank" class="text-slate-400 hover:text-white"><i class="fab fa-github text-xl"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="sistemas" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+            <div>
+                <h2 class="text-3xl font-extrabold text-white mb-2">Engenharia de Sistemas</h2>
+                <p class="text-slate-500">Aplicações corporativas focadas em escalabilidade e performance.</p>
+            </div>
+            <span class="text-sky-500 font-bold tracking-widest text-sm">NICHO 01</span>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="card-projeto p-8 rounded-3xl">
+                <h3 class="text-xl font-bold text-white mb-4">Solutiuns</h3>
+                <p class="text-slate-400 text-sm mb-8 leading-relaxed">Desenvolvimento focado em otimização empresarial e estratégias avançadas de SEO.</p>
+                <a href="https://www.solutiuns.com.br/" target="_blank" class="flex items-center gap-2 text-sky-400 font-bold text-sm group">
+                    Visitar Site <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="card-projeto p-8 rounded-3xl">
+                <h3 class="text-xl font-bold text-white mb-4">DDM Engenharia</h3>
+                <p class="text-slate-400 text-sm mb-8 leading-relaxed">Interface técnica projetada para o setor de engenharia, com foco em usabilidade.</p>
+                <a href="https://ddmeng.com.br/" target="_blank" class="flex items-center gap-2 text-sky-400 font-bold text-sm group">
+                    Visitar Site <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="card-projeto p-8 rounded-3xl">
+                <h3 class="text-xl font-bold text-white mb-4">RRF Soluções</h3>
+                <p class="text-slate-400 text-sm mb-8 leading-relaxed">Presença digital robusta e otimizada para serviços de manutenção técnica.</p>
+                <a href="https://www.rrfsolucoes.com.br/" target="_blank" class="flex items-center gap-2 text-sky-400 font-bold text-sm group">
+                    Visitar Site <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="dados" class="bg-slate-900/40 border-y border-white/5 py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-white mb-2">Ciência de Dados</h2>
+                    <p class="text-slate-500">Estatísticas em tempo real puxadas diretamente do ecossistema de desenvolvimento.</p>
+                </div>
+                <span class="text-emerald-500 font-bold tracking-widest text-sm">NICHO 02</span>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div class="bg-[#0b1120] p-10 rounded-3xl border border-white/5">
+                    <h4 class="text-sm font-bold text-slate-400 mb-8 uppercase tracking-widest">Linguagens mais utilizadas</h4>
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Jheex&layout=compact&theme=tokyonight&hide_border=true&bg_color=transparent&title_color=38bdf8&text_color=cbd5e1" class="w-full">
+                </div>
+                <div class="bg-[#0b1120] p-10 rounded-3xl border border-white/5">
+                    <h4 class="text-sm font-bold text-slate-400 mb-8 uppercase tracking-widest">Atividade de Código</h4>
+                    <img src="https://github-readme-stats.vercel.app/api?username=Jheex&show_icons=true&theme=tokyonight&hide_border=true&bg_color=transparent&title_color=38bdf8&text_color=cbd5e1" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aprendizado" class="max-w-7xl mx-auto px-6 py-24 pb-40">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+            <div>
+                <h2 class="text-3xl font-extrabold text-white mb-2">Laboratório de Aprendizado</h2>
+                <p class="text-slate-500">Novas tecnologias e projetos em fase de experimentação.</p>
+            </div>
+            <span class="text-amber-500 font-bold tracking-widest text-sm">NICHO 03</span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-8 border border-white/5 rounded-3xl bg-white/5 opacity-60">
+                <span class="indicador" style="background: var(--laranja-alerta);"></span>
+                <h4 class="font-bold text-white mt-4 mb-2">Inteligência Artificial</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">Em breve: Estudos sobre modelos de predição aplicados ao mercado.</p>
+            </div>
+            <div class="p-8 border border-dashed border-white/10 rounded-3xl flex items-center justify-center text-slate-600 text-sm font-bold">
+                Aguardando novo projeto...
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center">
+        <p class="text-slate-600 text-xs font-bold uppercase tracking-[0.3em]">
+            © 2026 Jheex • Analista de Sistemas
+        </p>
+    </footer>
+
+</body>
+</html>
