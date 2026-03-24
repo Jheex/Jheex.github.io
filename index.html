@@ -281,6 +281,255 @@
             box-shadow: 0 10px 30px rgba(255,0,0,0.4);
         }
 
+        /* ========================================
+        NOVOS ESTILOS - CERTIFICAÇÕES 
+        ======================================= */
+        .certifications-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem; 
+            margin-top: 3rem;
+        }
+
+        .cert-card {
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid var(--glass-border);
+            border-radius: 20px; 
+            padding: 2.5rem; 
+            text-align: center;
+            transition: all 0.4s ease; 
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: -100%;
+            width: 100%; 
+            height: 4px; 
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-blue));
+            transition: left 0.4s ease;
+        }
+
+        .cert-card:hover::before { 
+            left: 0; 
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px) scale(1.02); 
+            border-color: var(--primary-red);
+            box-shadow: 0 25px 50px rgba(255,0,0,0.2);
+        }
+
+        .cert-icon {
+            width: 80px; 
+            height: 80px; 
+            background: linear-gradient(45deg, var(--primary-red), var(--primary-blue));
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            margin: 0 auto 1.5rem; 
+            font-size: 2rem; 
+            color: white; 
+            box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+        }
+
+        .cert-title { 
+            font-family: 'Space Grotesk'; 
+            font-size: 1.3rem; 
+            margin-bottom: 0.5rem; 
+            color: var(--text-white);
+        }
+
+        .cert-meta { 
+            color: var(--text-gray); 
+            font-size: 0.9rem; 
+            margin-bottom: 1rem; 
+        }
+
+        .cert-progress {
+            background: rgba(255,255,255,0.1); 
+            border-radius: 10px; 
+            height: 8px;
+            overflow: hidden; 
+            margin-top: 1rem;
+        }
+
+        .cert-bar {
+            height: 100%; 
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-blue));
+            border-radius: 10px; 
+            transition: width 2s ease;
+        }
+
+        /* ========================================
+        NOVOS ESTILOS - REDES SOCIAIS 
+        ======================================= */
+        .social-section {
+            text-align: center; 
+            padding: 4rem 0;
+        }
+
+        .social-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; 
+            max-width: 1000px; 
+            margin: 3rem auto 0;
+        }
+
+        .social-card {
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid var(--glass-border);
+            border-radius: 24px; 
+            padding: 3rem 2rem; 
+            transition: all 0.4s ease;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .social-card::before {
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0;
+            width: 100%; 
+            height: 4px; 
+            background: var(--primary-red);
+            transform: scaleX(0); 
+            transition: transform 0.4s ease;
+        }
+
+        .social-card:hover::before { 
+            transform: scaleX(1); 
+        }
+
+        .social-card:hover {
+            transform: translateY(-15px); 
+            border-color: var(--primary-red);
+            box-shadow: 0 30px 60px rgba(255,0,0,0.3);
+        }
+
+        .social-icon {
+            font-size: 4rem; 
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-red), var(--primary-blue));
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            background-clip: text; 
+            display: block;
+        }
+
+        .social-card h3 { 
+            font-family: 'Space Grotesk'; 
+            font-size: 1.4rem; 
+            margin-bottom: 1rem; 
+            color: var(--text-white);
+        }
+
+        .social-card p { 
+            color: var(--text-gray); 
+            margin-bottom: 1.5rem; 
+        }
+
+        .social-link {
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.75rem;
+            color: var(--text-light); 
+            text-decoration: none; 
+            font-weight: 500;
+            padding: 0.75rem 1.5rem; 
+            border: 1px solid var(--glass-border);
+            border-radius: 50px; 
+            backdrop-filter: blur(10px); 
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary-red); 
+            background: rgba(255,0,0,0.1);
+            transform: translateX(10px); 
+            color: var(--primary-red);
+        }
+
+        /* ========================================
+        ESTILOS - FOOTER 
+        ======================================= */
+        .footer {
+            background: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border); 
+            padding: 4rem 5% 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px; 
+            margin: 0 auto 2rem;
+        }
+
+        .footer-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 2rem; 
+            flex-wrap: wrap; 
+            margin-bottom: 2rem; 
+        }
+
+        .footer-link {
+            color: var(--text-gray); 
+            text-decoration: none; 
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover { 
+            color: var(--primary-red); 
+        }
+
+        /* ========================================
+        RESPONSIVE 
+        ======================================= */
+        @media (max-width: 768px) {
+            .certifications-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .social-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+            
+            .footer-links { 
+                flex-direction: column; 
+                gap: 1rem; 
+            }
+            
+            .social-grid { 
+                grid-template-columns: 1fr; 
+            }
+        }
+
+        /* ========================================
+        ANIMAÇÕES GLOBAIS (adicione no <style> principal)
+        ======================================= */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float { 
+            animation: float 6s ease-in-out infinite; 
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -309,6 +558,8 @@
                 <li><a href="#tech" class="nav-link" data-section="tech">Tech</a></li>
                 <li><a href="#projects" class="nav-link" data-section="projects">Projetos</a></li>
                 <li><a href="#education" class="nav-link" data-section="education">Formação</a></li>
+                <li><a href="#certifications" class="nav-link" data-section="certifications">Certificações</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contato</a></li>
             </ul>
             <a href="mailto:jhonatanlimacoelho25@gmail.com" class="cta-btn">Contato</a>
         </nav>
@@ -612,6 +863,136 @@
             </div>
         </div>
     </section>
+
+    <section class="section" id="certifications">
+        <div class="container">
+            <h2 class="section-title">🏆 Certificações & Formação Complementar</h2>
+            <div class="glass-card">
+                <p style="text-align: center; color: var(--text-gray); font-size: 1.1rem; margin-bottom: 3rem;">
+                    Mais de 25 certificações em Data Science, Programação, Infraestrutura e Design
+                </p>
+                <div class="certifications-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-brain"></i></div>
+                        <div class="cert-title">Data Science & IA</div>
+                        <div class="cert-meta">FIAP, Alura, Cisco, Microsoft (2024-2026)</div>
+                        <div>Matemática para DS, ML Básico, IoT, Ética IA</div>
+                        <div class="cert-progress"><div class="cert-bar" style="width: 95%;"></div></div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-code"></i></div>
+                        <div class="cert-title">Programação</div>
+                        <div class="cert-meta">Cisco, SENAI, FIAP, Alura (2024-2026)</div>
+                        <div>Python Essentials, Lógica, HTML/CSS/JS</div>
+                        <div class="cert-progress"><div class="cert-bar" style="width: 90%;"></div></div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="cert-title">Infra & Cybersecurity</div>
+                        <div class="cert-meta">FIAP, Cisco, SENAI, Bradesco (2024-2026)</div>
+                        <div>Hardware, Windows 10, Cybersecurity Fundamentals</div>
+                        <div class="cert-progress"><div class="cert-bar" style="width: 85%;"></div></div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-palette"></i></div>
+                        <div class="cert-title">Design Gráfico</div>
+                        <div class="cert-meta">Adobe Suite (2019-2021)</div>
+                        <div>Photoshop, Illustrator, InDesign, Dreamweaver</div>
+                        <div class="cert-progress"><div class="cert-bar" style="width: 100%;"></div></div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="cert-title">Business & Corporativo</div>
+                        <div class="cert-meta">SENAI, SEBRAE, Bradesco (2024)</div>
+                        <div>Office, Gestão Financeira, TI Corporativa</div>
+                        <div class="cert-progress"><div class="cert-bar" style="width: 80%;"></div></div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-language"></i></div>
+                        <div class="cert-title">Idiomas</div>
+                        <div class="cert-meta">Alura, Michigan (2022-2026)</div>
+                        <div>Espanhol Básico, English MET</div>
+                        <div class="cert-progress"><div class="cert-bar" style="width: 70%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">📬 Conecte-se Comigo</h2>
+            <div class="glass-card social-section">
+                <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 1rem;">
+                    Estou aberto para colaborações, mentorias e novos desafios!
+                </p>
+                <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 3rem;">
+                    "A persistência é o caminho do êxito."
+                </p>
+
+                <div class="social-grid">
+                    <div class="social-card">
+                        <i class="fab fa-github social-icon"></i>
+                        <h3>GitHub</h3>
+                        <p>446 commits em 2026 | 17 repositórios públicos</p>
+                        <a href="https://github.com/Jheex" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i> github.com/Jheex
+                        </a>
+                    </div>
+
+                    <div class="social-card">
+                        <i class="fab fa-linkedin social-icon"></i>
+                        <h3>LinkedIn</h3>
+                        <p>Perfil profissional e certificações</p>
+                        <a href="https://linkedin.com/in/jhonatanlima25" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i> /in/jhonatanlima25
+                        </a>
+                    </div>
+
+                    <div class="social-card">
+                        <i class="fas fa-envelope social-icon"></i>
+                        <h3>Email</h3>
+                        <p>Respondo em até 24h</p>
+                        <a href="mailto:jhonatanlimacoelho25@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i> jhonatanlimacoelho25@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="social-card">
+                        <i class="fas fa-file-pdf social-icon"></i>
+                        <h3>Currículo</h3>
+                        <p>Download CV completo 2026</p>
+                        <a href="https://github.com/Jheex/Jheex/raw/main/assets/Curriculo_2026.pdf" target="_blank" class="social-link">
+                            <i class="fas fa-download"></i> Baixar PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-family: 'Space Grotesk'; margin-bottom: 1rem;">Jhonatan Lima</h3>
+            <p style="color: var(--text-gray); margin-bottom: 2rem;">
+                Full Stack Developer | Data Scientist | Designer | Diadema, SP
+            </p>
+            <div class="footer-links">
+                <a href="mailto:jhonatanlimacoelho25@gmail.com" class="footer-link">Email</a>
+                <a href="https://github.com/Jheex" class="footer-link" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/jhonatanlima25" class="footer-link" target="_blank">LinkedIn</a>
+                <a href="https://jheex.github.io" class="footer-link" target="_blank">Portfolio</a>
+            </div>
+            <div style="color: var(--text-gray); font-size: 0.85rem; margin-top: 2rem;">
+                © 2026 Jhonatan Lima.
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Navigation active state
