@@ -3,181 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jhonatan Lima | Data Science & Full Stack</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Jhonatan Lima | Data Science & Dev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
         :root {
-            --primary-red: #FF0000;
-            --dark-bg: #0a0a0a;
-            --card-bg: #1a1a1a;
-            --text-gray: #cccccc;
-            --white: #ffffff;
+            --red: #ff0000;
+            --dark-red: #8b0000;
+            --bg: #050505;
+            --card: #121212;
+            --text: #ffffff;
+            --gray: #888888;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--white);
-            margin: 0;
-            line-height: 1.6;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        /* Background Decorativo */
+        .glow-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, var(--dark-red) 0%, transparent 40%);
+            z-index: -1; opacity: 0.4;
         }
 
+        /* Header / Hero */
         header {
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/Jhonatan.jpg'); /* Use o caminho da sua imagem */
-            background-size: cover;
-            background-position: center;
-            border-bottom: 4px solid var(--primary-red);
-            text-align: center;
-        }
-
-        .red-glow {
-            text-shadow: 0 0 10px var(--primary-red);
-        }
-
-        nav {
-            background: rgba(26, 26, 26, 0.95);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            text-align: center;
-            border-bottom: 1px solid #333;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary-red);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 2rem;
-        }
-
-        .grid-projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-left: 5px solid var(--primary-red);
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
             padding: 20px;
-            border-radius: 5px;
-            transition: transform 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
-        }
+        .hero-title { font-size: 5rem; font-weight: 900; letter-spacing: -2px; line-height: 0.9; text-transform: uppercase; }
+        .hero-title span { color: var(--red); text-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
+        .hero-subtitle { font-size: 1.2rem; color: var(--gray); margin-top: 20px; max-width: 600px; }
 
-        .badge {
-            background: var(--primary-red);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-right: 5px;
+        /* Navigation */
+        nav {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(10px);
+            padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1);
+            display: flex; gap: 30px; z-index: 1000;
         }
+        nav a { color: var(--gray); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--red); }
 
-        .btn-red {
-            display: inline-block;
-            background: var(--primary-red);
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-weight: bold;
+        /* Sections */
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+        h2 { font-size: 2.5rem; margin-bottom: 50px; border-left: 5px solid var(--red); padding-left: 20px; }
+
+        /* Grid de Projetos */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .project-card {
+            background: var(--card); border: 1px solid #222; border-radius: 15px;
+            overflow: hidden; transition: 0.4s; position: relative;
         }
+        .project-card:hover { border-color: var(--red); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(255,0,0,0.1); }
+        .project-img { width: 100%; height: 200px; background: #1a1a1a; object-fit: cover; }
+        .project-info { padding: 25px; }
+        .project-info h3 { margin-bottom: 10px; font-size: 1.5rem; }
+        .project-info p { color: var(--gray); font-size: 0.9rem; margin-bottom: 20px; }
+        
+        .tags { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag { font-size: 0.7rem; background: #1a1a1a; color: var(--red); padding: 5px 12px; border-radius: 5px; border: 1px solid var(--red); font-weight: bold; }
 
-        footer {
-            text-align: center;
-            padding: 3rem;
-            background: #000;
-            border-top: 1px solid #333;
+        /* Stats Section (Data Science Feel) */
+        .stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 50px 0; }
+        .stat-item { text-align: center; }
+        .stat-item h4 { font-size: 3rem; color: var(--red); }
+        .stat-item p { color: var(--gray); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+
+        /* Footer */
+        footer { text-align: center; padding: 100px 20px 150px; color: var(--gray); }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        .social-links a { color: var(--text); font-size: 1.5rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--red); transform: scale(1.2); }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            nav { width: 90%; justify-content: center; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#projetos">Projetos</a>
-    <a href="#formacao">Formação</a>
-    <a href="#contato">Contato</a>
-</nav>
+    <div class="glow-bg"></div>
 
-<header>
-    <h1 class="red-glow">JHONATAN LIMA</h1>
-    <p>Data Science @ FIAP | Full Stack Developer | Designer</p>
-</header>
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#sobre">BIO</a>
+        <a href="#projetos">WORK</a>
+        <a href="#contato">CONNECT</a>
+    </nav>
 
-<div class="container">
-    
-    <section id="sobre">
-        <h2 style="color: var(--primary-red);">// BIOGRAFIA</h2>
-        <p>Atualmente cursando <strong>Data Science na FIAP</strong> e formado em ADS pela UNIP. Especialista em transformar dados em inteligência estratégica, unindo a precisão do Back-end com a estética do Design Gráfico.</p>
-    </section>
+    <header id="home">
+        <p style="letter-spacing: 5px; color: var(--red); font-weight: 700;">DATA SCIENTIST & DEVELOPER</p>
+        <h1 class="hero-title">JHONATAN<br><span>LIMA</span></h1>
+        <p class="hero-subtitle">Transformando Big Data em inteligência visual e soluções Full Stack de alta performance.</p>
+    </header>
 
-    <section id="projetos">
-        <h2 style="color: var(--primary-red);">// PROJETOS EM DESTAQUE</h2>
-        <div class="grid-projects">
-            <div class="card">
-                <h3>Achadinhos da Ana</h3>
-                <p>Web App Full Stack dinâmico desenvolvido com Django e SQL.</p>
-                <div>
-                    <span class="badge">Python</span>
-                    <span class="badge">Django</span>
+    <div class="container">
+        <section class="stats">
+            <div class="stat-item"><h4>ADS</h4><p>Formado UNIP</p></div>
+            <div class="stat-item"><h4>DS</h4><p>Cursando FIAP</p></div>
+            <div class="stat-item"><h4>+5</h4><p>Anos Design</p></div>
+        </section>
+
+        <section id="sobre">
+            <h2>// SOBRE</h2>
+            <p style="font-size: 1.2rem; color: var(--gray); line-height: 1.8;">
+                Atualmente na <b>Anidrol Indústria Química</b> e cursando <b>Data Science na FIAP</b>. 
+                Minha missão é unir o rigor analítico da engenharia de dados com o impacto visual do design gráfico. 
+                De automações em VBA a sistemas robustos em Django, foco em resultados que impulsionam negócios.
+            </p>
+        </section>
+
+        <section id="projetos" style="margin-top: 100px;">
+            <h2>// PROJETOS SELECIONADOS</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <img src="assets/achadinhosdaana.jpg" class="project-img" alt="Achadinhos">
+                    <div class="project-info">
+                        <h3>Achadinhos da Ana</h3>
+                        <p>Plataforma Full Stack com Django. Gestão dinâmica de produtos e banco de dados SQL.</p>
+                        <div class="tags">
+                            <span class="tag">PYTHON</span>
+                            <span class="tag">DJANGO</span>
+                            <span class="tag">SQL</span>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://achadinhos-da-ana.onrender.com/" target="_blank" class="btn-red">Ver Projeto</a>
-            </div>
 
-            <div class="card">
-                <h3>Solutiuns Technologies</h3>
-                <p>Site institucional focado em infraestrutura e segurança digital.</p>
-                <div>
-                    <span class="badge">HTML/CSS</span>
-                    <span class="badge">PHP</span>
+                <div class="project-card">
+                    <img src="assets/solutiuns.jpg" class="project-img" alt="Solutiuns">
+                    <div class="project-info">
+                        <h3>Solutiuns Tech</h3>
+                        <p>Interface moderna para serviços de infraestrutura de TI e Segurança Digital.</p>
+                        <div class="tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">JS</span>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://www.solutiuns.com.br/" target="_blank" class="btn-red">Ver Site</a>
+
             </div>
-        </div>
-    </section>
-
-    <section id="formacao" style="margin-top: 40px;">
-        <h2 style="color: var(--primary-red);">// EXPERIÊNCIA ATUAL</h2>
-        <div class="card">
-            <h3>Anidrol Indústria Química</h3>
-            <p><strong>Auxiliar de TI</strong> (Jan 2026 - Presente)</p>
-            <p>Atuação em Infraestrutura, Active Directory e Análise de Dados com Power BI.</p>
-        </div>
-    </section>
-
-</div>
-
-<footer>
-    <p>&copy; 2026 Jhonatan Lima - Desenvolvido com foco em Dados & Design.</p>
-    <div style="font-size: 1.5rem;">
-        <a href="https://www.linkedin.com/in/jhonatanlima25" style="color:white; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Jheex" style="color:white; margin: 0 10px;"><i class="fab fa-github"></i></a>
+        </section>
     </div>
-</footer>
+
+    <footer id="contato">
+        <p>DISPONÍVEL PARA PROJETOS E CONEXÕES ESTRATÉGICAS</p>
+        <div class="social-links">
+            <a href="https://github.com/Jheex"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jhonatanlima25"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:jhonatanlimacoelho25@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.7rem;">© 2026 JHONATAN LIMA</p>
+    </footer>
 
 </body>
 </html>
