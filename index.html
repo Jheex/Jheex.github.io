@@ -3,39 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio Profissional de Jhonatan Lima Coelho - TI, Suporte e Análise de Dados">
     <title>Jhonatan Lima Coelho | Portfólio TI & Dados</title>
+    
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #09090b;
-            --card-bg: #121215;
-            --card-border: #22222a;
+            --bg-dark: #08080a;
+            --card-bg: #111116;
+            --card-border: rgba(239, 68, 68, 0.2);
+            --card-border-hover: rgba(239, 68, 68, 0.6);
             --primary-red: #ef4444;
             --dark-red: #991b1b;
-            --neon-glow: rgba(239, 68, 68, 0.35);
-            --text-main: #f4f4f5;
+            --glow-red: rgba(239, 68, 68, 0.25);
+            --text-main: #ffffff;
             --text-muted: #a1a1aa;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-code: 'Fira Code', monospace;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-main);
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-dark);
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            font-size: 1.05rem;
         }
 
-        /* Background Particle Canvas */
+        /* Canvas Fundo */
         #particles-canvas {
             position: fixed;
             top: 0;
@@ -46,260 +53,441 @@
             pointer-events: none;
         }
 
-        /* Header / Navbar */
+        /* Header Full-Width Redesenhado */
         header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(9, 9, 11, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(8, 8, 10, 0.85);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--card-border);
             z-index: 1000;
-            padding: 15px 5%;
+            padding: 20px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Fira Code', monospace;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-main);
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
         }
 
-        .logo span {
+        .logo .first-name {
+            color: #ffffff;
+        }
+
+        .logo .last-name {
             color: var(--primary-red);
+            text-shadow: 0 0 15px var(--glow-red);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 32px;
+            align-items: center;
         }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 6px 0;
         }
 
         nav a:hover {
-            color: var(--primary-red);
-            text-shadow: 0 0 8px var(--neon-glow);
+            color: #ffffff;
         }
 
-        /* Layout Container */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary-red);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 100px 20px 40px;
+            padding: 140px 24px 60px;
         }
 
-        /* Hero Section with Terminal */
+        /* HERO SECTION */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr 460px;
+            gap: 50px;
             align-items: center;
-            min-height: 75vh;
-            margin-bottom: 60px;
+            min-height: 80vh;
+            margin-bottom: 80px;
         }
 
         .hero-text h1 {
-            font-size: 2.8rem;
+            font-size: 4rem;
             font-weight: 800;
-            margin-bottom: 10px;
-            line-height: 1.2;
+            line-height: 1.1;
+            margin-bottom: 16px;
         }
 
-        .hero-text h1 span {
+        .hero-text h1 .first-name {
+            color: #ffffff;
+            display: block;
+        }
+
+        .hero-text h1 .last-name {
             color: var(--primary-red);
-            text-shadow: 0 0 15px var(--neon-glow);
+            display: block;
+            text-shadow: 0 0 25px var(--glow-red);
         }
 
-        .hero-text h2 {
-            font-size: 1.3rem;
+        .hero-subtitle {
+            font-size: 1.35rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hero-subtitle .text-red {
+            color: var(--primary-red);
+            text-shadow: 0 0 10px var(--glow-red);
+        }
+
+        .hero-subtitle .text-white {
+            color: var(--text-main);
+        }
+
+        .hero-subtitle .separator {
             color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: 20px;
+            font-weight: 300;
+            opacity: 0.5;
         }
 
         .hero-text p {
             color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            max-width: 650px;
         }
 
-        .hero-buttons {
+        /* CTO Buttons */
+        .cto-buttons {
             display: flex;
-            gap: 15px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
+            gap: 10px;
+            padding: 14px 26px;
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 1rem;
             cursor: pointer;
-            border: none;
-            font-size: 0.95rem;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
-            background-color: var(--primary-red);
+            background: var(--primary-red);
             color: #ffffff;
-            box-shadow: 0 0 15px var(--neon-glow);
+            box-shadow: 0 0 15px var(--glow-red);
         }
 
         .btn-primary:hover {
-            background-color: #dc2626;
-            box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
-            transform: translateY(-2px);
+            background: #dc2626;
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
         }
 
         .btn-outline {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.03);
             color: var(--text-main);
-            border: 1px solid var(--card-border);
+            border-color: var(--card-border);
         }
 
         .btn-outline:hover {
             border-color: var(--primary-red);
             color: var(--primary-red);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
-        /* Terminal Component */
-        .terminal {
-            background: #0d0d10;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(239, 68, 68, 0.15);
-            font-family: 'Fira Code', monospace;
+        /* Frame da Foto */
+        .hero-photo-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
         }
 
-        .terminal-header {
+        .hero-photo-frame {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 1 / 1;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            box-shadow: 0 0 35px var(--glow-red);
+        }
+
+        .hero-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 17px;
             background: #18181c;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid var(--card-border);
+            display: block;
         }
 
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .dot-red { background: #ef4444; }
-        .dot-yellow { background: #f59e0b; }
-        .dot-green { background: #10b981; }
-
-        .terminal-title {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            margin-left: 10px;
-        }
-
-        .terminal-body {
-            padding: 20px;
-            font-size: 0.9rem;
-            color: var(--text-main);
-        }
-
-        .terminal-line {
-            margin-bottom: 12px;
-        }
-
-        .prompt {
-            color: var(--primary-red);
-            margin-right: 8px;
-        }
-
-        .command {
-            color: #f4f4f5;
-        }
-
-        .output {
-            color: var(--text-muted);
-            padding-left: 15px;
-            border-left: 2px solid var(--dark-red);
-            margin-top: 5px;
-        }
-
-        /* Section Titles */
+        /* TITULOS DE SEÇÃO */
         .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 30px;
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .section-title i {
             color: var(--primary-red);
         }
 
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--primary-red), transparent);
-            margin-left: 10px;
+        /* FORMAÇÃO ACADÊMICA */
+        .academic-container {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-bottom: 80px;
         }
 
-        /* Experience Timeline */
+        .academic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .academic-card:hover {
+            border-color: var(--card-border-hover);
+            box-shadow: 0 8px 25px var(--glow-red);
+        }
+
+        .academic-top {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 18px;
+        }
+
+        .institution-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: #18181c;
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-red);
+            flex-shrink: 0;
+        }
+
+        .academic-info h4 {
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .academic-detail {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-top: 3px;
+        }
+
+        .academic-status {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        .status-cursando {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--primary-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .status-concluido {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .skills-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .skill-pill {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #ffffff;
+            font-size: 0.88rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--primary-red);
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        /* Droplist / Accordion */
+        details.curriculum-droplist {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 18px;
+        }
+
+        details.curriculum-droplist summary {
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-main);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        details.curriculum-droplist summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.curriculum-droplist summary::after {
+            content: "\f078";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary-red);
+            transition: transform 0.3s;
+        }
+
+        details.curriculum-droplist[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .curriculum-content {
+            padding: 18px;
+            border-top: 1px solid var(--card-border);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 12px;
+        }
+
+        .curriculum-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .curriculum-item i {
+            color: var(--primary-red);
+            font-size: 0.8rem;
+        }
+
+        /* EXPERIÊNCIA PROFISSIONAL */
         .timeline {
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 60px;
+            padding-left: 28px;
+            margin-bottom: 80px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0;
-            bottom: 0;
+            top: 5px;
+            bottom: 5px;
             width: 2px;
             background: linear-gradient(180deg, var(--primary-red), var(--card-border));
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 35px;
+            margin-bottom: 28px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 20px;
-            border-radius: 10px;
-            transition: 0.3s;
+            border-radius: 14px;
+            padding: 26px;
+            transition: all 0.3s ease;
         }
 
         .timeline-item:hover {
-            border-color: var(--primary-red);
-            box-shadow: 0 0 15px var(--neon-glow);
+            border-color: var(--card-border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px var(--glow-red);
         }
 
         .timeline-node {
             position: absolute;
-            left: -39px;
-            top: 20px;
+            left: -35px;
+            top: 28px;
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            background: var(--bg-color);
+            background: var(--bg-dark);
             border: 3px solid var(--primary-red);
             box-shadow: 0 0 10px var(--primary-red);
         }
@@ -309,11 +497,12 @@
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            margin-bottom: 8px;
+            gap: 10px;
+            margin-bottom: 14px;
         }
 
         .role {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-main);
         }
@@ -321,185 +510,406 @@
         .company {
             color: var(--primary-red);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
         }
 
-        .date {
+        .date-badge {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            font-family: var(--font-code);
             background: rgba(239, 68, 68, 0.1);
-            padding: 2px 10px;
-            border-radius: 12px;
+            color: var(--primary-red);
+            padding: 5px 14px;
+            border-radius: 20px;
             border: 1px solid rgba(239, 68, 68, 0.2);
         }
 
-        .timeline-body {
+        .timeline-bullets {
+            list-style: none;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-top: 10px;
+            font-size: 1rem;
         }
 
-        /* Skills Filter System */
-        .skills-section {
-            margin-bottom: 60px;
+        .timeline-bullets li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
         }
 
-        .filter-buttons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
+        .timeline-bullets li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
         }
 
-        .filter-btn {
+        /* PROJETOS COM MODAL */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .project-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px var(--glow-red);
+        }
+
+        .project-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-card p {
             color: var(--text-muted);
-            padding: 8px 18px;
-            border-radius: 20px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            font-family: var(--font-code);
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--primary-red);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            max-width: 680px;
+            width: 100%;
+            padding: 35px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
             cursor: pointer;
-            font-size: 0.9rem;
             transition: 0.3s;
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary-red);
-            color: #fff;
-            border-color: var(--primary-red);
-            box-shadow: 0 0 10px var(--neon-glow);
+        .modal-close:hover {
+            color: var(--primary-red);
         }
 
+        .modal-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .modal-description {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 22px;
+        }
+
+        .modal-features {
+            margin-bottom: 28px;
+        }
+
+        .modal-features h5 {
+            color: var(--primary-red);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .modal-features ul {
+            list-style: none;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .modal-features li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .modal-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+        }
+
+        /* HABILIDADES */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 18px;
+            margin-bottom: 80px;
         }
 
         .skill-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 18px;
-            border-radius: 10px;
+            padding: 22px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 18px;
             transition: 0.3s;
         }
 
         .skill-card:hover {
             transform: translateY(-3px);
             border-color: var(--primary-red);
-            box-shadow: 0 0 15px var(--neon-glow);
+            box-shadow: 0 5px 15px var(--glow-red);
         }
 
         .skill-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--primary-red);
         }
 
         .skill-info h4 {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.05rem;
+            font-weight: 700;
         }
 
         .skill-info p {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        /* Courses Grid */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-            margin-bottom: 60px;
-        }
-
-        .course-card {
+        /* CURSOS ESCALÁVEIS */
+        .courses-container {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 15px 20px;
-            border-radius: 8px;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 80px;
+        }
+
+        .courses-controls {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 18px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            padding: 12px 18px 12px 42px;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+            font-size: 0.95rem;
             transition: 0.3s;
         }
 
-        .course-card:hover {
+        .search-box input:focus {
             border-color: var(--primary-red);
         }
 
-        .course-card i {
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .course-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary-red);
+            color: #fff;
+            border-color: var(--primary-red);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .course-item {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.3s;
+        }
+
+        .course-item:hover {
+            border-color: var(--primary-red);
+        }
+
+        .course-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .course-top i {
             color: var(--primary-red);
             font-size: 1.2rem;
+            margin-top: 2px;
         }
 
-        /* Contact Box */
+        .course-name {
+            font-size: 0.98rem;
+            font-weight: 600;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+            padding-top: 10px;
+        }
+
+        /* CONTATO RODAPÉ */
         .contact-box {
-            background: linear-gradient(135deg, var(--card-bg), #1a080a);
+            background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 15px;
-            padding: 40px;
+            border-radius: 18px;
+            padding: 45px 25px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 35px;
         }
 
-        .contact-item {
-            background: rgba(9, 9, 11, 0.6);
+        .contact-card {
+            background: rgba(8, 8, 10, 0.6);
             border: 1px solid var(--card-border);
-            padding: 20px;
-            border-radius: 10px;
+            padding: 24px;
+            border-radius: 12px;
             text-decoration: none;
             color: var(--text-main);
             transition: 0.3s;
         }
 
-        .contact-item:hover {
+        .contact-card:hover {
             border-color: var(--primary-red);
             transform: translateY(-4px);
-            box-shadow: 0 0 15px var(--neon-glow);
+            box-shadow: 0 8px 20px var(--glow-red);
         }
 
-        .contact-item i {
-            font-size: 1.8rem;
+        .contact-card i {
+            font-size: 2rem;
             color: var(--primary-red);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        /* Toast Alert */
         #toast {
             visibility: hidden;
-            min-width: 250px;
-            background-color: var(--primary-red);
+            min-width: 260px;
+            background: var(--primary-red);
             color: #fff;
             text-align: center;
-            border-radius: 6px;
-            padding: 12px;
+            border-radius: 8px;
+            padding: 14px;
             position: fixed;
-            z-index: 2000;
+            z-index: 3000;
             left: 50%;
             bottom: 30px;
             transform: translateX(-50%);
-            box-shadow: 0 0 15px var(--neon-glow);
+            box-shadow: 0 0 15px var(--glow-red);
             font-weight: 600;
         }
 
@@ -508,52 +918,80 @@
             animation: fadein 0.5s, fadeout 0.5s 2.5s;
         }
 
-        @keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 30px; opacity: 1;}
-        }
-
-        @keyframes fadeout {
-            from {bottom: 30px; opacity: 1;}
-            to {bottom: 0; opacity: 0;}
-        }
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
 
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 35px;
             color: var(--text-muted);
             border-top: 1px solid var(--card-border);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .hero {
                 grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-text h1 {
+                font-size: 3.2rem;
+            }
+            .hero-subtitle {
+                justify-content: center;
+            }
+            .cto-buttons {
+                justify-content: center;
+            }
+            .hero-photo-frame {
+                max-width: 380px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
             }
             nav ul {
                 display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(8, 8, 10, 0.98);
+                border-bottom: 1px solid var(--card-border);
+                flex-direction: column;
+                padding: 25px;
+                gap: 18px;
+            }
+            nav ul.active {
+                display: flex;
             }
             .hero-text h1 {
-                font-size: 2.2rem;
+                font-size: 2.6rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Canvas de Partículas em Segundo Plano -->
     <canvas id="particles-canvas"></canvas>
 
-    <!-- Header Navigation -->
+    <!-- Header Atualizado e Clean -->
     <header>
-        <div class="logo">Jhonatan<span>.dev</span></div>
+        <div class="logo">
+            <span class="first-name">Jhonatan</span>
+            <span class="last-name">Lima</span>
+        </div>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
         <nav>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#experiencia">Experiência</a></li>
+            <ul id="nav-menu">
                 <li><a href="#formacao">Formação</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
@@ -564,46 +1002,114 @@
         <!-- Hero Section -->
         <section class="hero" id="sobre">
             <div class="hero-text">
-                <h1>Jhonatan <span>Lima Coelho</span></h1>
-                <h2>Tecnologia da Informação & Futuro Data Scientist</h2>
-                <p>Estudante de Análise e Desenvolvimento de Sistemas com foco em Suporte Técnico, Helpdesk e análise de dados. Experiência em resolução de problemas de infraestrutura, atendimento ao usuário e sistemas corporativos.</p>
+                <h1>
+                    <span class="first-name">Jhonatan</span>
+                    <span class="last-name">Lima Coelho</span>
+                </h1>
                 
-                <div class="hero-buttons">
-                    <a href="#contato" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Falar Comigo</a>
+                <div class="hero-subtitle">
+                    <span class="text-red">Helpdesk</span>
+                    <span class="separator">|</span>
+                    <span class="text-white">Data Scientist</span>
+                    <span class="separator">|</span>
+                    <span class="text-red">Systems Developer</span>
+                </div>
+
+                <p>Estudante de Análise e Desenvolvimento de Sistemas e Pós-graduando em Data Science na FIAP. Vivência prática em suporte técnico de TI, administração de redes e infraestrutura, além da análise e otimização de processos de dados.</p>
+                
+                <div class="cto-buttons">
+                    <a href="javascript:void(0)" onclick="copyEmail()" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> E-mail</a>
                     <a href="https://github.com/jhonatanlima25" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://linkedin.com/in/jhonatanlima25" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://wa.me/5511981382542" target="_blank" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
                 </div>
             </div>
 
-            <!-- Interactive Terminal Widget -->
-            <div class="terminal">
-                <div class="terminal-header">
-                    <span class="dot dot-red"></span>
-                    <span class="dot dot-yellow"></span>
-                    <span class="dot dot-green"></span>
-                    <span class="terminal-title">bash - jhonatan@profile:~</span>
-                </div>
-                <div class="terminal-body">
-                    <div class="terminal-line">
-                        <span class="prompt">jhonatan@dev:~$</span> <span class="command">whoami</span>
-                        <div class="output">Jhonatan Lima Coelho (Suporte & TI)</div>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="prompt">jhonatan@dev:~$</span> <span class="command">cat localizacao.txt</span>
-                        <div class="output">Diadema, São Paulo - Brasil</div>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="prompt">jhonatan@dev:~$</span> <span class="command">cat foco_atual.py</span>
-                        <div class="output">Python, Power BI, SQL & Big Data</div>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="prompt">jhonatan@dev:~$</span> <span class="command">echo $STATUS</span>
-                        <div class="output" style="color: #10b981;">● Disponível para novas oportunidades</div>
-                    </div>
+            <div class="hero-photo-wrapper">
+                <div class="hero-photo-frame">
+                    <img src="images/jhonatan/foto.png" alt="Jhonatan Lima Coelho" onerror="this.src='https://via.placeholder.com/450x450/121215/ef4444?text=Jhonatan+Coelho'">
                 </div>
             </div>
         </section>
 
-        <!-- Experience Timeline -->
+        <!-- Formação Acadêmica -->
+        <section id="formacao">
+            <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Formação Acadêmica</h3>
+            
+            <div class="academic-container">
+                <!-- FIAP -->
+                <div class="academic-card">
+                    <div class="academic-top">
+                        <div class="institution-logo">
+                            <i class="fa-solid fa-brain-circuit"></i>
+                        </div>
+                        <div class="academic-info">
+                            <h4>FIAP — Faculdade de Informática e Administração Paulista</h4>
+                            <div class="academic-detail">Graduação: Pós-Graduação / Especialização (2026 - 2027)</div>
+                            <div class="academic-detail">Curso: <strong>Data Science - Big Data, AI & Data Engineering</strong></div>
+                            <span class="academic-status status-cursando">Status: Cursando</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-pills">
+                        <span class="skill-pill">Data Pipelines</span>
+                        <span class="skill-pill">Big Data Architecture</span>
+                        <span class="skill-pill">Machine Learning</span>
+                        <span class="skill-pill">Python para Dados</span>
+                        <span class="skill-pill">Power BI & DAX</span>
+                    </div>
+
+                    <details class="curriculum-droplist">
+                        <summary>Ver Grade Curricular</summary>
+                        <div class="curriculum-content">
+                            <div class="curriculum-grid">
+                                <div class="curriculum-item"><i class="fa-solid fa-angle-right"></i> Engenharia e Arquitetura de Dados</div>
+                                <div class="curriculum-item"><i class="fa-solid fa-angle-right"></i> Big Data & Ecosystem Hadoop/Spark</div>
+                                <div class="curriculum-item"><i class="fa-solid fa-angle-right"></i> Machine Learning & Deep Learning</div>
+                                <div class="curriculum-item"><i class="fa-solid fa-angle-right"></i> Modelagem e Visualização (Power BI)</div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- UNIP -->
+                <div class="academic-card">
+                    <div class="academic-top">
+                        <div class="institution-logo">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div class="academic-info">
+                            <h4>UNIP — Universidade Paulista</h4>
+                            <div class="academic-detail">Graduação: Tecnólogo (2024 - 2025)</div>
+                            <div class="academic-detail">Curso: <strong>Análise e Desenvolvimento de Sistemas</strong></div>
+                            <span class="academic-status status-concluido">Status: Concluído</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-pills">
+                        <span class="skill-pill">Engenharia de Software</span>
+                        <span class="skill-pill">Banco de Dados Relacional</span>
+                        <span class="skill-pill">Linguagens SQL</span>
+                        <span class="skill-pill">Redes de Computadores</span>
+                        <span class="skill-pill">Lógica de Programação</span>
+                    </div>
+
+                    <details class="curriculum-droplist">
+                        <summary>Ver Grade Curricular</summary>
+                        <div class="curriculum-content">
+                            <div class="curriculum-grid">
+                                <div class="curriculum-item"><i class="fa-solid fa-angle-right"></i> Modelagem de Banco de Dados</div>
+                                <div class="curriculum-item"><i class="fa-solid fa-angle-right"></i> Desenvolvimento Orientado a Objetos</div>
+                                <div class="curriculum-item"><i class="fa-solid fa-angle-right"></i> Gestão de Projetos de TI</div>
+                                <div class="curriculum-item"><i class="fa-solid fa-angle-right"></i> Arquitetura de Redes & Sistemas</div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiência Profissional -->
         <section id="experiencia">
             <h3 class="section-title"><i class="fa-solid fa-briefcase"></i> Experiência Profissional</h3>
             
@@ -612,14 +1118,31 @@
                     <div class="timeline-node"></div>
                     <div class="timeline-header">
                         <div>
-                            <div class="role">Helpdesk</div>
+                            <div class="role">Auxiliar de TI</div>
                             <div class="company">Anidrol Indústria Química</div>
                         </div>
-                        <span class="date">2025 - Atual</span>
+                        <span class="date-badge">2025 - Atual</span>
                     </div>
-                    <div class="timeline-body">
-                        Suporte técnico focado em diagnósticos de hardware, software e redes. Instalação e configuração de sistemas, manutenção preventiva/corretiva de microcomputadores, monitoramento de métricas e implementação de boas práticas de segurança digital.
+                    <ul class="timeline-bullets">
+                        <li>Suporte de Nível 1 e 2 para usuários internos na área fabril e administrativa.</li>
+                        <li>Atuação no gerenciamento de redes, manutenção preventiva de equipamentos e rotinas de backup.</li>
+                        <li>Apoio na parametrização e suporte ao ERP corporativo TOTVS Protheus.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-node"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role">Estagiário de TI</div>
+                            <div class="company">Anidrol Indústria Química</div>
+                        </div>
+                        <span class="date-badge">2024 - 2025</span>
                     </div>
+                    <ul class="timeline-bullets">
+                        <li>Diagnóstico e resolução de chamados de hardware, sistemas operacionais e periféricos.</li>
+                        <li>Organização do inventário de ativos de TI e configuração de novos computadores no domínio.</li>
+                    </ul>
                 </div>
 
                 <div class="timeline-item">
@@ -629,182 +1152,286 @@
                             <div class="role">Estagiário de Logística</div>
                             <div class="company">YOFC Brasil</div>
                         </div>
-                        <span class="date">2023 - 2025</span>
+                        <span class="date-badge">2023 - 2024</span>
                     </div>
-                    <div class="timeline-body">
-                        Apoio em rotinas operacionais e administrativas, controle de estoque e verificação de pedidos. Atuação diária utilizando ERPs corporativos (TOTVS Protheus, AOKI E2Corp) e automação de planilhas.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Academic Formation -->
-        <section id="formacao">
-            <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Formação Acadêmica</h3>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-node"></div>
-                    <div class="timeline-header">
-                        <div>
-                            <div class="role">Data Science - Big Data, BI & Data Engineering</div>
-                            <div class="company">FIAP - Faculdade de Informática e Administração Paulista</div>
-                        </div>
-                        <span class="date">2026 - 2027</span>
-                    </div>
+                    <ul class="timeline-bullets">
+                        <li>Acompanhamento de estoque, auditoria de dados de entrada/saída e suporte operacional via ERP.</li>
+                        <li>Criação de relatórios e planilhas automatizadas no Excel para controle da operação.</li>
+                    </ul>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-node"></div>
                     <div class="timeline-header">
                         <div>
-                            <div class="role">Análise e Desenvolvimento de Sistemas</div>
-                            <div class="company">UNIP - Universidade Paulista</div>
+                            <div class="role">Aprendiz de Logística</div>
+                            <div class="company">YOFC Brasil</div>
                         </div>
-                        <span class="date">2024 - 2025</span>
+                        <span class="date-badge">2022 - 2023</span>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li>Suporte administrativo, conferência de documentações e lançamento de registros no sistema.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos com Modal -->
+        <section id="projetos">
+            <h3 class="section-title"><i class="fa-solid fa-diagram-project"></i> Projetos em Destaque</h3>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <h4>Dashboard de Vendas BI <i class="fa-solid fa-chart-pie" style="color: var(--primary-red);"></i></h4>
+                        <p>Relatório de inteligência comercial com cálculos de margem de lucro e comportamento de vendas por região.</p>
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">DAX</span>
+                            <span class="tag">ETL</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="openModal('modal-p1')">
+                            <i class="fa-solid fa-circle-info"></i> Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h4>Automação de Redes em Python <i class="fa-brands fa-python" style="color: var(--primary-red);"></i></h4>
+                        <p>Script executável para auditoria contínua e monitoramento do status de ativos de TI na rede local.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Redes</span>
+                            <span class="tag">SysAdmin</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="openModal('modal-p2')">
+                            <i class="fa-solid fa-circle-info"></i> Ver Detalhes
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section with Dynamic Filters -->
-        <section class="skills-section" id="habilidades">
-            <h3 class="section-title"><i class="fa-solid fa-code"></i> Habilidades & Ferramentas</h3>
-            
-            <div class="filter-buttons">
-                <button class="filter-btn active" onclick="filterSkills('all')">Todas</button>
-                <button class="filter-btn" onclick="filterSkills('dados')">Dados & BI</button>
-                <button class="filter-btn" onclick="filterSkills('ti')">TI & Sistemas</button>
-                <button class="filter-btn" onclick="filterSkills('design')">Design & UX</button>
+        <!-- Modais dos Projetos -->
+        <div class="modal-overlay" id="modal-p1" onclick="closeModalOnOutside(event, 'modal-p1')">
+            <div class="modal-box">
+                <button class="modal-close" onclick="closeModal('modal-p1')"><i class="fa-solid fa-xmark"></i></button>
+                <div class="modal-title">Dashboard de Vendas & Performance (BI)</div>
+                <div class="modal-description">
+                    Este projeto tem como objetivo consolidar dados de vendas dispersos de sistemas ERPs em uma visualização estratégica e interativa, permitindo a análise rápida de KPIs para tomada de decisões executivas.
+                </div>
+                <div class="modal-features">
+                    <h5>Recursos e Destaques:</h5>
+                    <ul>
+                        <li>Tratamento e limpeza de dados avançada com Power Query (ETL).</li>
+                        <li>Modelagem de dados em esquema estrela (Star Schema).</li>
+                        <li>Métricas calculadas em DAX (Margem, Crescimento YoY e Projeção).</li>
+                        <li>Filtros dinâmicos por região, segmento de cliente e período.</li>
+                    </ul>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://github.com/jhonatanlima25" target="_blank" class="btn btn-primary"><i class="fa-brands fa-github"></i> Ver no GitHub</a>
+                </div>
             </div>
+        </div>
 
-            <div class="skills-grid" id="skills-grid">
-                <!-- Skill Cards -->
-                <div class="skill-card" data-category="dados">
-                    <i class="fa-solid fa-chart-line skill-icon"></i>
+        <div class="modal-overlay" id="modal-p2" onclick="closeModalOnOutside(event, 'modal-p2')">
+            <div class="modal-box">
+                <button class="modal-close" onclick="closeModal('modal-p2')"><i class="fa-solid fa-xmark"></i></button>
+                <div class="modal-title">Automação de Monitoramento de Redes</div>
+                <div class="modal-description">
+                    Desenvolvido para automatizar a verificação periódica de disponibilidade de impressoras, servidores e switches da rede interna, notificando quedas e gerando relatórios em tempo real.
+                </div>
+                <div class="modal-features">
+                    <h5>Recursos e Destaques:</h5>
+                    <ul>
+                        <li>Ping contínuo via pacotes ICMP controlados via Python.</li>
+                        <li>Exportação de logs de falhas em formato JSON / CSV.</li>
+                        <li>Redução do tempo de identificação de falhas na infraestrutura.</li>
+                    </ul>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://github.com/jhonatanlima25" target="_blank" class="btn btn-primary"><i class="fa-brands fa-github"></i> Ver no GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Habilidades -->
+        <section id="habilidades">
+            <h3 class="section-title"><i class="fa-solid fa-gears"></i> Habilidades Técnicas</h3>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-solid fa-chart-pie skill-icon"></i>
                     <div class="skill-info">
-                        <h4>Power BI</h4>
-                        <p>Dashboards & BI</p>
+                        <h4>Power BI & BI</h4>
+                        <p>Dashboards & ETL</p>
                     </div>
                 </div>
 
-                <div class="skill-card" data-category="dados">
+                <div class="skill-card">
                     <i class="fa-brands fa-python skill-icon"></i>
                     <div class="skill-info">
                         <h4>Python</h4>
-                        <p>Essentials & Scripts</p>
+                        <p>Automação & Dados</p>
                     </div>
                 </div>
 
-                <div class="skill-card" data-category="dados">
+                <div class="skill-card">
                     <i class="fa-solid fa-database skill-icon"></i>
                     <div class="skill-info">
-                        <h4>MySQL</h4>
-                        <p>Banco de Dados</p>
+                        <h4>MySQL / SQL</h4>
+                        <p>Consultas & Banco de Dados</p>
                     </div>
                 </div>
 
-                <div class="skill-card" data-category="ti">
-                    <i class="fa-brands fa-windows skill-icon"></i>
+                <div class="skill-card">
+                    <i class="fa-solid fa-headset skill-icon"></i>
                     <div class="skill-info">
-                        <h4>Windows / Linux</h4>
-                        <p>Sistemas Operacionais</p>
+                        <h4>Suporte & Hardware</h4>
+                        <p>Manutenção & Redes</p>
                     </div>
                 </div>
 
-                <div class="skill-card" data-category="ti">
-                    <i class="fa-solid fa-network-wired skill-icon"></i>
-                    <div class="skill-info">
-                        <h4>Redes & Hardware</h4>
-                        <p>Manutenção & Suporte</p>
-                    </div>
-                </div>
-
-                <div class="skill-card" data-category="ti">
-                    <i class="fa-solid fa-building skill-icon"></i>
+                <div class="skill-card">
+                    <i class="fa-solid fa-building-user skill-icon"></i>
                     <div class="skill-info">
                         <h4>TOTVS Protheus</h4>
                         <p>Sistema ERP</p>
                     </div>
                 </div>
 
-                <div class="skill-card" data-category="design">
-                    <i class="fa-brands fa-figma skill-icon"></i>
+                <div class="skill-card">
+                    <i class="fa-brands fa-windows skill-icon"></i>
                     <div class="skill-info">
-                        <h4>Figma / Canva</h4>
-                        <p>Protótipos UX/UI</p>
-                    </div>
-                </div>
-
-                <div class="skill-card" data-category="design">
-                    <i class="fa-solid fa-palette skill-icon"></i>
-                    <div class="skill-info">
-                        <h4>Photoshop / Illustrator</h4>
-                        <p>Design Gráfico</p>
+                        <h4>Windows / Linux</h4>
+                        <p>Sistemas Operacionais</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Certifications -->
-        <section>
+        <!-- Certificações Escaláveis -->
+        <section id="cursos">
             <h3 class="section-title"><i class="fa-solid fa-certificate"></i> Cursos & Certificações</h3>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <i class="fa-solid fa-check-circle"></i>
-                    <span>Python Essentials 1 — Senai/Cisco (30h)</span>
+            
+            <div class="courses-container">
+                <div class="courses-controls">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="course-search" placeholder="Pesquisar certificado ou tecnologia..." onkeyup="filterCourses()">
+                    </div>
+
+                    <div class="course-tabs">
+                        <button class="tab-btn active" onclick="filterCategory(this, 'all')">Todos</button>
+                        <button class="tab-btn" onclick="filterCategory(this, 'dados')">Dados</button>
+                        <button class="tab-btn" onclick="filterCategory(this, 'ti')">TI & Redes</button>
+                    </div>
                 </div>
-                <div class="course-card">
-                    <i class="fa-solid fa-check-circle"></i>
-                    <span>Data Science — Cisco (6h)</span>
-                </div>
-                <div class="course-card">
-                    <i class="fa-solid fa-check-circle"></i>
-                    <span>Computer Hardware Basics — Cisco (6h)</span>
-                </div>
-                <div class="course-card">
-                    <i class="fa-solid fa-check-circle"></i>
-                    <span>Segurança em TI — Fundação Bradesco (12h)</span>
-                </div>
-                <div class="course-card">
-                    <i class="fa-solid fa-check-circle"></i>
-                    <span>Introduction to IoT — Cisco (6h)</span>
-                </div>
-                <div class="course-card">
-                    <i class="fa-solid fa-check-circle"></i>
-                    <span>Ética na IA — Senai (4h)</span>
+
+                <div class="courses-grid" id="courses-grid">
+                    <div class="course-item" data-category="dados" data-name="python essentials 1">
+                        <div class="course-top">
+                            <i class="fa-solid fa-award"></i>
+                            <div class="course-name">Python Essentials 1</div>
+                        </div>
+                        <div class="course-meta">
+                            <span>Cisco / Senai</span>
+                            <span>30 Horas</span>
+                        </div>
+                    </div>
+
+                    <div class="course-item" data-category="dados" data-name="data science essentials">
+                        <div class="course-top">
+                            <i class="fa-solid fa-award"></i>
+                            <div class="course-name">Data Science Essentials</div>
+                        </div>
+                        <div class="course-meta">
+                            <span>Cisco Networking Academy</span>
+                            <span>6 Horas</span>
+                        </div>
+                    </div>
+
+                    <div class="course-item" data-category="dados" data-name="ética na inteligência artificial">
+                        <div class="course-top">
+                            <i class="fa-solid fa-award"></i>
+                            <div class="course-name">Ética na Inteligência Artificial</div>
+                        </div>
+                        <div class="course-meta">
+                            <span>Senai</span>
+                            <span>4 Horas</span>
+                        </div>
+                    </div>
+
+                    <div class="course-item" data-category="ti" data-name="computer hardware basics">
+                        <div class="course-top">
+                            <i class="fa-solid fa-award"></i>
+                            <div class="course-name">Computer Hardware Basics</div>
+                        </div>
+                        <div class="course-meta">
+                            <span>Cisco Networking Academy</span>
+                            <span>6 Horas</span>
+                        </div>
+                    </div>
+
+                    <div class="course-item" data-category="ti" data-name="segurança em ti">
+                        <div class="course-top">
+                            <i class="fa-solid fa-award"></i>
+                            <div class="course-name">Segurança em TI</div>
+                        </div>
+                        <div class="course-meta">
+                            <span>Fundação Bradesco</span>
+                            <span>12 Horas</span>
+                        </div>
+                    </div>
+
+                    <div class="course-item" data-category="ti" data-name="introduction to iot">
+                        <div class="course-top">
+                            <i class="fa-solid fa-award"></i>
+                            <div class="course-name">Introduction to IoT</div>
+                        </div>
+                        <div class="course-meta">
+                            <span>Cisco Networking Academy</span>
+                            <span>6 Horas</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Box -->
+        <!-- Contato -->
         <section id="contato" class="contact-box">
-            <h2>Vamos trabalhar juntos?</h2>
-            <p style="color: var(--text-muted); margin-top: 10px;">Estou disponível para novas oportunidades na área de TI, Suporte e Dados.</p>
+            <h2 style="font-size: 2.2rem; font-weight: 800;">Vamos conversar?</h2>
+            <p style="color: var(--text-muted); margin-top: 8px; font-size: 1.05rem;">Estou à disposição para colaborar com soluções em Tecnologia da Informação e Análise de Dados.</p>
 
             <div class="contact-grid">
-                <a href="javascript:void(0)" onclick="copyEmail()" class="contact-item">
+                <a href="javascript:void(0)" onclick="copyEmail()" class="contact-card">
                     <i class="fa-solid fa-envelope"></i>
                     <h4>E-mail</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Clique para copiar</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Clique para copiar</p>
                 </a>
 
-                <a href="https://linkedin.com/in/jhonatanlima25" target="_blank" class="contact-item">
+                <a href="https://linkedin.com/in/jhonatanlima25" target="_blank" class="contact-card">
                     <i class="fa-brands fa-linkedin"></i>
                     <h4>LinkedIn</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">jhonatanlima25</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">in/jhonatanlima25</p>
                 </a>
 
-                <a href="https://github.com/jhonatanlima25" target="_blank" class="contact-item">
+                <a href="https://github.com/jhonatanlima25" target="_blank" class="contact-card">
                     <i class="fa-brands fa-github"></i>
                     <h4>GitHub</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">@jhonatanlima25</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">@jhonatanlima25</p>
                 </a>
 
-                <a href="https://wa.me/5511981382542" target="_blank" class="contact-item">
+                <a href="https://wa.me/5511981382542" target="_blank" class="contact-card">
                     <i class="fa-brands fa-whatsapp"></i>
                     <h4>WhatsApp</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">(11) 98138-2542</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">(11) 98138-2542</p>
                 </a>
             </div>
         </section>
@@ -812,40 +1439,72 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Jhonatan Lima Coelho. Hospedado via GitHub Pages.</p>
+        <p>&copy; 2026 Jhonatan Lima Coelho. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Toast Notification -->
-    <div id="toast">E-mail copiado com sucesso!</div>
+    <div id="toast">E-mail copiado para a área de transferência!</div>
 
-    <!-- Scripts for Interactivity -->
     <script>
-        // Copy Email Function
+        // Menu Mobile
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Copiar Email
         function copyEmail() {
-            const email = "Jhonatanlimacoelho25@gmail.com";
-            navigator.clipboard.writeText(email);
+            navigator.clipboard.writeText("Jhonatanlimacoelho25@gmail.com");
             const toast = document.getElementById("toast");
             toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
-        // Skills Filter
-        function filterSkills(category) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        // Modais de Projetos
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
 
-            const cards = document.querySelectorAll('.skill-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function closeModalOnOutside(event, id) {
+            if (event.target.id === id) {
+                closeModal(id);
+            }
+        }
+
+        // Filtro de Certificados
+        let currentCategory = 'all';
+
+        function filterCategory(btn, category) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCategory = category;
+            filterCourses();
+        }
+
+        function filterCourses() {
+            const searchValue = document.getElementById('course-search').value.toLowerCase();
+            const items = document.querySelectorAll('.course-item');
+
+            items.forEach(item => {
+                const category = item.getAttribute('data-category');
+                const name = item.getAttribute('data-name');
+                const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+                const matchesSearch = name.includes(searchValue);
+
+                if (matchesCategory && matchesSearch) {
+                    item.style.display = 'flex';
                 } else {
-                    card.style.display = 'none';
+                    item.style.display = 'none';
                 }
             });
         }
 
-        // Red Particles Canvas Animation
+        // Animação do Canvas
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -856,23 +1515,18 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const particles = [];
-        const particleCount = 45;
+        const particles = Array.from({ length: 35 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            dx: (Math.random() - 0.5) * 0.5,
+            dy: (Math.random() - 0.5) * 0.5
+        }));
 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 2 + 1,
-                dx: (Math.random() - 0.5) * 0.6,
-                dy: (Math.random() - 0.5) * 0.6
-            });
-        }
-
-        function drawParticles() {
+        function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(239, 68, 68, 0.5)';
-            ctx.strokeStyle = 'rgba(239, 68, 68, 0.08)';
+            ctx.fillStyle = 'rgba(239, 68, 68, 0.4)';
+            ctx.strokeStyle = 'rgba(239, 68, 68, 0.06)';
 
             particles.forEach((p, index) => {
                 p.x += p.dx;
@@ -896,11 +1550,9 @@
                     }
                 }
             });
-
-            requestAnimationFrame(drawParticles);
+            requestAnimationFrame(animate);
         }
-
-        drawParticles();
+        animate();
     </script>
 </body>
 </html>
