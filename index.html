@@ -857,25 +857,15 @@
             color: var(--primary-red);
         }
 
-        /* COMPETÊNCIAS E IDIOMAS CENTRALIZADOS */
-        .skills-grid {
+        /* IDIOMAS (3 CARDS SIMÉTRICOS COM BANDEIRAS) */
+        .languages-grid-three {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(3, minmax(280px, 1fr));
             gap: 18px;
             margin-bottom: 80px;
-        }
-
-        .skills-grid-centered {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-bottom: 80px;
-        }
-
-        .skills-grid-centered .skill-card {
-            flex: 1 1 260px;
-            max-width: 320px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .skill-card {
@@ -907,6 +897,87 @@
 
         .skill-info p {
             font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- ESTILO DE ABAS PARA HABILIDADES TÉCNICAS --- */
+        .skills-tabs-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 80px;
+        }
+
+        .skills-tabs-header {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 15px;
+        }
+
+        .skill-tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tab-btn:hover, .skill-tab-btn.active {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: var(--primary-red);
+            color: #ffffff;
+            box-shadow: 0 0 10px var(--glow-red);
+        }
+
+        .skill-tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .skill-tab-panel.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .tech-badge-item {
+            background: rgba(8, 8, 10, 0.5);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: 0.3s;
+        }
+
+        .tech-badge-item:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-2px);
+            background: rgba(239, 68, 68, 0.04);
+        }
+
+        .tech-badge-item i {
+            font-size: 1.5rem;
+            color: var(--primary-red);
+        }
+
+        .tech-badge-info h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .tech-badge-info p {
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
@@ -1000,6 +1071,9 @@
                 max-width: 360px;
             }
             .experience-container {
+                grid-template-columns: 1fr;
+            }
+            .languages-grid-three {
                 grid-template-columns: 1fr;
             }
         }
@@ -1347,82 +1421,309 @@
 
         <!-- Competência -->
         <section id="competencia">
-            <!-- Idiomas Centralizados -->
+            <!-- Idiomas com 3 cards simétricos e bandeiras -->
             <h3 class="section-title section-title-center"><i class="fa-solid fa-language"></i> Idiomas</h3>
-            <div class="skills-grid-centered">
+            <div class="languages-grid-three">
                 <div class="skill-card">
-                    <i class="fa-solid fa-comment-dots skill-icon"></i>
+                    <span class="skill-icon" style="font-size: 2.2rem;">🇧🇷</span>
                     <div class="skill-info">
                         <h4>Português</h4>
-                        <p>Nativo</p>
+                        <p>Brasileiro - Nativo</p>
                     </div>
                 </div>
 
                 <div class="skill-card">
-                    <i class="fa-solid fa-globe skill-icon"></i>
+                    <span class="skill-icon" style="font-size: 2.2rem;">🇺🇸</span>
                     <div class="skill-info">
                         <h4>Inglês</h4>
-                        <p>Avançado (Estudo desde os 12 anos)</p>
+                        <p>Avançado</p>
                     </div>
                 </div>
 
                 <div class="skill-card">
-                    <i class="fa-solid fa-earth-americas skill-icon"></i>
+                    <span class="skill-icon" style="font-size: 2.2rem;">🇪🇸</span>
                     <div class="skill-info">
                         <h4>Espanhol</h4>
-                        <p>Intermediário (Iniciado há 1 ano)</p>
+                        <p>Intermediário</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Competência / Habilidades Técnicas -->
+            <!-- Competência / Habilidades Técnicas em Abas Interativas -->
             <h3 class="section-title" style="margin-top: 50px;"><i class="fa-solid fa-gears"></i> Competência / Habilidades Técnicas</h3>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fa-solid fa-chart-pie skill-icon"></i>
-                    <div class="skill-info">
-                        <h4>Power BI & BI</h4>
-                        <p>Dashboards & ETL</p>
+            <p class="academic-intro">Meu ecossistema tecnológico abrange desde a infraestrutura e suporte técnico até o desenvolvimento full-stack, design e engenharia de dados. Navegue pelas categorias abaixo:</p>
+
+            <div class="skills-tabs-container">
+                <div class="skills-tabs-header">
+                    <button class="skill-tab-btn active" onclick="switchSkillTab(event, 'tab-dev')"><i class="fa-solid fa-code"></i> Desenvolvimento & Web</button>
+                    <button class="skill-tab-btn" onclick="switchSkillTab(event, 'tab-data')"><i class="fa-solid fa-chart-pie"></i> Dados & BI</button>
+                    <button class="skill-tab-btn" onclick="switchSkillTab(event, 'tab-infra')"><i class="fa-solid fa-network-wired"></i> Infraestrutura & Cloud</button>
+                    <button class="skill-tab-btn" onclick="switchSkillTab(event, 'tab-systems')"><i class="fa-solid fa-building-user"></i> Sistemas & ERPs</button>
+                    <button class="skill-tab-btn" onclick="switchSkillTab(event, 'tab-design')"><i class="fa-solid fa-pen-nib"></i> Design & UI/UX</button>
+                </div>
+
+                <!-- Aba 1: Desenvolvimento & Web -->
+                <div id="tab-dev" class="skill-tab-panel active">
+                    <div class="tech-badge-item">
+                        <i class="fa-brands fa-python"></i>
+                        <div class="tech-badge-info">
+                            <h5>Python</h5>
+                            <p>Automação e Scripts</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-brands fa-php"></i>
+                        <div class="tech-badge-info">
+                            <h5>PHP</h5>
+                            <p>Desenvolvimento Web</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-code"></i>
+                        <div class="tech-badge-info">
+                            <h5>C#</h5>
+                            <p>Programação Orientada a Objetos</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-code-branch"></i>
+                        <div class="tech-badge-info">
+                            <h5>.NET</h5>
+                            <p>Ecossistema e Aplicações</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <div class="tech-badge-info">
+                            <h5>Django</h5>
+                            <p>Framework Web Python</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-window-maximize"></i>
+                        <div class="tech-badge-info">
+                            <h5>Streamlit</h5>
+                            <p>Aplicações Web de Dados</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-file-code"></i>
+                        <div class="tech-badge-info">
+                            <h5>HTML & CSS</h5>
+                            <p>Marcação e Estilização Web</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <div class="tech-badge-info">
+                            <h5>Dart</h5>
+                            <p>Desenvolvimento Mobile</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-code"></i>
+                        <div class="tech-badge-info">
+                            <h5>VBA</h5>
+                            <p>Automação de Planilhas</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-code-merge"></i>
+                        <div class="tech-badge-info">
+                            <h5>Git</h5>
+                            <p>Controle de Versão</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <div class="tech-badge-info">
+                            <h5>Dreamweaver</h5>
+                            <p>Editor e Ferramenta Web</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-server"></i>
+                        <div class="tech-badge-info">
+                            <h5>XAMPP</h5>
+                            <p>Ambiente Local de Servidor</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-card">
-                    <i class="fa-brands fa-python skill-icon"></i>
-                    <div class="skill-info">
-                        <h4>Python</h4>
-                        <p>Automação & Dados</p>
+                <!-- Aba 2: Dados & BI -->
+                <div id="tab-data" class="skill-tab-panel">
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-database"></i>
+                        <div class="tech-badge-info">
+                            <h5>MySQL & SQL Server</h5>
+                            <p>Gestão de Bancos Relacionais</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <div class="tech-badge-info">
+                            <h5>Excel</h5>
+                            <p>Planilhas, Fórmulas e Dashboards</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <div class="tech-badge-info">
+                            <h5>Power BI</h5>
+                            <p>Visualização e ETL</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-chart-bar"></i>
+                        <div class="tech-badge-info">
+                            <h5>Looker Studio</h5>
+                            <p>Relatórios e Dashboards em Nuvem</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-table"></i>
+                        <div class="tech-badge-info">
+                            <h5>Pandas</h5>
+                            <p>Manipulação e Análise de Dados</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-card">
-                    <i class="fa-solid fa-database skill-icon"></i>
-                    <div class="skill-info">
-                        <h4>MySQL / SQL</h4>
-                        <p>Consultas & Banco de Dados</p>
+                <!-- Aba 3: Infraestrutura & Cloud -->
+                <div id="tab-infra" class="skill-tab-panel">
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-network-wired"></i>
+                        <div class="tech-badge-info">
+                            <h5>Redes</h5>
+                            <p>Configuração e Suporte Local</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-computer"></i>
+                        <div class="tech-badge-info">
+                            <h5>Windows</h5>
+                            <p>Sistemas Operacionais e Suporte</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-brands fa-linux"></i>
+                        <div class="tech-badge-info">
+                            <h5>Linux</h5>
+                            <p>Ambientes e Servidores</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-headset"></i>
+                        <div class="tech-badge-info">
+                            <h5>Suporte N1 / N2</h5>
+                            <p>Atendimento a Usuários e Ativos</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-cloud"></i>
+                        <div class="tech-badge-info">
+                            <h5>AWS, Azure & OCI</h5>
+                            <p>Computação em Nuvem</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-card">
-                    <i class="fa-solid fa-headset skill-icon"></i>
-                    <div class="skill-info">
-                        <h4>Suporte & Hardware</h4>
-                        <p>Manutenção & Redes</p>
+                <!-- Aba 4: Sistemas & ERPs -->
+                <div id="tab-systems" class="skill-tab-panel">
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-building-user"></i>
+                        <div class="tech-badge-info">
+                            <h5>TOTVS Protheus</h5>
+                            <p>Sistema ERP Corporativo</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-industry"></i>
+                        <div class="tech-badge-info">
+                            <h5>Aoki E2Corp</h5>
+                            <p>ERP e Gestão Operacional</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-presentation-screen"></i>
+                        <div class="tech-badge-info">
+                            <h5>PowerPoint</h5>
+                            <p>Apresentações Profissionais</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-file-word"></i>
+                        <div class="tech-badge-info">
+                            <h5>Word</h5>
+                            <p>Editor de Documentos</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div class="tech-badge-info">
+                            <h5>Outlook</h5>
+                            <p>Gestão de E-mails e Agenda</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-users"></i>
+                        <div class="tech-badge-info">
+                            <h5>Teams</h5>
+                            <p>Comunicação e Colaboração</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-card">
-                    <i class="fa-solid fa-building-user skill-icon"></i>
-                    <div class="skill-info">
-                        <h4>TOTVS Protheus</h4>
-                        <p>Sistema ERP</p>
+                <!-- Aba 5: Design & UI/UX -->
+                <div id="tab-design" class="skill-tab-panel">
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-palette"></i>
+                        <div class="tech-badge-info">
+                            <h5>Photoshop</h5>
+                            <p>Edição e Tratamento de Imagens</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="skill-card">
-                    <i class="fa-brands fa-windows skill-icon"></i>
-                    <div class="skill-info">
-                        <h4>Windows / Linux</h4>
-                        <p>Sistemas Operacionais</p>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-pen-nib"></i>
+                        <div class="tech-badge-info">
+                            <h5>Adobe Illustrator</h5>
+                            <p>Design Vetorial</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-book-open"></i>
+                        <div class="tech-badge-info">
+                            <h5>Adobe InDesign</h5>
+                            <p>Editoração e Publicação</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <div class="tech-badge-info">
+                            <h5>Adobe Flash</h5>
+                            <p>Animação e Mídia Interativa</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-vector-square"></i>
+                        <div class="tech-badge-info">
+                            <h5>CorelDraw</h5>
+                            <p>Ilustração Vetorial</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-brands fa-figma"></i>
+                        <div class="tech-badge-info">
+                            <h5>Figma</h5>
+                            <p>UI/UX Design & Prototipagem</p>
+                        </div>
+                    </div>
+                    <div class="tech-badge-item">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <div class="tech-badge-info">
+                            <h5>Canva</h5>
+                            <p>Design Ágil</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1571,6 +1872,15 @@
         function switchExpTab(event, panelId) {
             document.querySelectorAll('.exp-tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.exp-panel').forEach(panel => panel.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(panelId).classList.add('active');
+        }
+
+        /* Função para alternar as abas de habilidades técnicas */
+        function switchSkillTab(event, panelId) {
+            document.querySelectorAll('.skill-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.skill-tab-panel').forEach(panel => panel.classList.remove('active'));
 
             event.currentTarget.classList.add('active');
             document.getElementById(panelId).classList.add('active');
