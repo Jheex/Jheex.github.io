@@ -61,20 +61,37 @@
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--card-border);
             z-index: 1000;
-            padding: 20px 6%;
+            padding: 16px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .header-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-red);
+            box-shadow: 0 0 10px var(--glow-red);
+            background: #18181c;
+        }
+
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             gap: 6px;
-            user-select: none;
         }
 
         .logo .first-name {
@@ -859,18 +876,18 @@
             text-align: center;
         }
 
-        /* PROJETOS COM THUMBNAIL / PREVIEW */
+        /* PROJETOS: 2 CARDS POR LINHA (MAIORES NA HORIZONTAL) */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
             margin-bottom: 80px;
         }
 
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -881,12 +898,12 @@
         .project-card:hover {
             border-color: var(--card-border-hover);
             transform: translateY(-4px);
-            box-shadow: 0 10px 25px var(--glow-red);
+            box-shadow: 0 10px 30px var(--glow-red);
         }
 
         .project-thumbnail {
             width: 100%;
-            height: 190px;
+            height: 230px;
             object-fit: cover;
             border-bottom: 1px solid var(--card-border);
             background: #18181c;
@@ -898,7 +915,7 @@
         }
 
         .project-content {
-            padding: 24px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -906,25 +923,25 @@
         }
 
         .project-card h4 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 14px;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .project-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
+            font-size: 1rem;
+            margin-bottom: 18px;
         }
 
         .project-tech-stack {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--primary-red);
             font-family: var(--font-code);
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             font-weight: 600;
         }
 
@@ -932,15 +949,15 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            margin-bottom: 20px;
-            font-size: 0.88rem;
+            gap: 8px;
+            margin-bottom: 24px;
+            font-size: 0.92rem;
             color: var(--text-muted);
         }
 
         .project-diff-list li {
             position: relative;
-            padding-left: 16px;
+            padding-left: 18px;
         }
 
         .project-diff-list li::before {
@@ -948,6 +965,7 @@
             position: absolute;
             left: 0;
             color: var(--primary-red);
+            font-weight: bold;
         }
 
         /* MODAL */
@@ -1150,38 +1168,74 @@
         .contact-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 18px;
-            padding: 45px 25px;
+            border-radius: 20px;
+            padding: 60px 40px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-top: 60px;
+        }
+
+        .contact-box h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-            margin-top: 35px;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .contact-card {
-            background: rgba(8, 8, 10, 0.6);
+            background: rgba(8, 8, 10, 0.7);
             border: 1px solid var(--card-border);
-            padding: 24px;
-            border-radius: 12px;
+            padding: 30px 20px;
+            border-radius: 14px;
             text-decoration: none;
             color: var(--text-main);
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .contact-card:hover {
             border-color: var(--primary-red);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px var(--glow-red);
+            background: rgba(239, 68, 68, 0.04);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--glow-red);
         }
 
         .contact-card i {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-red);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 0 10px var(--glow-red));
+        }
+
+        .contact-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .contact-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
         }
 
         #toast {
@@ -1215,6 +1269,7 @@
             color: var(--text-muted);
             border-top: 1px solid var(--card-border);
             font-size: 0.9rem;
+            margin-top: 60px;
         }
 
         @media (max-width: 992px) {
@@ -1244,6 +1299,9 @@
             .cert-dropdown-content {
                 grid-template-columns: 1fr;
             }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1268,6 +1326,9 @@
             .hero-text h1 {
                 font-size: 2.6rem;
             }
+            .contact-box {
+                padding: 35px 20px;
+            }
         }
     </style>
 </head>
@@ -1276,10 +1337,13 @@
     <canvas id="particles-canvas"></canvas>
 
     <header>
-        <div class="logo">
-            <span class="first-name">Jhonatan</span>
-            <span class="last-name">Lima</span>
-        </div>
+        <a href="#sobre" class="logo-link">
+            <img src="images/jhonatan/foto.png" alt="Avatar de Jhonatan" class="header-avatar" onerror="this.src='https://via.placeholder.com/42x42/18181c/ef4444?text=JJ'">
+            <div class="logo">
+                <span class="first-name">Jhonatan</span>
+                <span class="last-name">Lima</span>
+            </div>
+        </a>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu">
             <i class="fa-solid fa-bars"></i>
         </button>
@@ -1935,7 +1999,7 @@
             </details>
         </section>
 
-        <!-- Projetos em Destaque (Com Previews / Thumbnails) -->
+        <!-- Projetos em Destaque (2 Cards por Linha) -->
         <section id="projetos">
             <h3 class="section-title"><i class="fa-solid fa-diagram-project"></i> Projetos em Destaque</h3>
             <p class="academic-intro">Nesta seção, apresento uma seleção de projetos que refletem minha capacidade de transformar ideias em produtos digitais funcionais. Aqui você encontrará desde aplicações Full Stack robustas, desenvolvidas com Django e bancos de dados relacionais, até ecossistemas web focados em UX/UI e performance. Cada projeto é um laboratório onde aplico lógica de programação, arquitetura de sistemas e design estratégico para criar experiências de alto impacto.</p>
@@ -2047,32 +2111,32 @@
 
         <!-- Contato -->
         <section id="contato" class="contact-box">
-            <h2 style="font-size: 2.2rem; font-weight: 800;">Vamos conversar?</h2>
-            <p style="color: var(--text-muted); margin-top: 8px; font-size: 1.05rem;">Estou à disposição para colaborar com soluções em Tecnologia da Informação e Análise de Dados.</p>
+            <h2>Vamos conversar?</h2>
+            <p>Estou à disposição para colaborar com soluções em Tecnologia da Informação e Análise de Dados.</p>
 
             <div class="contact-grid">
                 <a href="javascript:void(0)" onclick="copyEmail()" class="contact-card">
                     <i class="fa-solid fa-envelope"></i>
                     <h4>E-mail</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">Clique para copiar</p>
+                    <p>Clique para copiar</p>
                 </a>
 
                 <a href="https://linkedin.com/in/jhonatanlima25" target="_blank" class="contact-card">
                     <i class="fa-brands fa-linkedin"></i>
                     <h4>LinkedIn</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">in/jhonatanlima25</p>
+                    <p>in/jhonatanlima25</p>
                 </a>
 
                 <a href="https://github.com/jhonatanlima25" target="_blank" class="contact-card">
                     <i class="fa-brands fa-github"></i>
                     <h4>GitHub</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">@jhonatanlima25</p>
+                    <p>@jhonatanlima25</p>
                 </a>
 
                 <a href="https://wa.me/5511981382542" target="_blank" class="contact-card">
                     <i class="fa-brands fa-whatsapp"></i>
                     <h4>WhatsApp</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">(11) 98138-2542</p>
+                    <p>(11) 98138-2542</p>
                 </a>
             </div>
         </section>
