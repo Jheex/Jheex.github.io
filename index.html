@@ -61,7 +61,7 @@
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--card-border);
             z-index: 1000;
-            padding: 16px 6%;
+            padding: 18px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -70,28 +70,22 @@
         .logo-link {
             display: flex;
             align-items: center;
-            gap: 12px;
             text-decoration: none;
             user-select: none;
         }
 
-        .header-avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary-red);
-            box-shadow: 0 0 10px var(--glow-red);
-            background: #18181c;
-        }
-
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover .logo {
+            opacity: 0.85;
         }
 
         .logo .first-name {
@@ -1338,7 +1332,6 @@
 
     <header>
         <a href="#sobre" class="logo-link">
-            <img src="images/jhonatan/foto.png" alt="Avatar de Jhonatan" class="header-avatar" onerror="this.src='https://via.placeholder.com/42x42/18181c/ef4444?text=JJ'">
             <div class="logo">
                 <span class="first-name">Jhonatan</span>
                 <span class="last-name">Lima</span>
@@ -2056,7 +2049,7 @@
                     <img src="images/projetos/ddm.png" alt="DDM Engenharia Civil" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=DDM+Engenharia+Civil'">
                     <div class="project-content">
                         <div>
-                            <h4>🏗️ DDM Engenharia Civil</h4>
+                            <h4>🏗️️ DDM Engenharia Civil</h4>
                             <p>Site profissional para o setor de engenharia. O projeto apresenta portfólio de serviços, seções sobre expertise da empresa e integração de contato para geração de leads.</p>
                             <div class="project-tech-stack">HTML • CSS • JavaScript • PHP</div>
                             <ul class="project-diff-list">
