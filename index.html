@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfólio Profissional de Jhonatan Lima Coelho - TI, Suporte e Análise de Dados">
-    <title>Jhonatan Lima Coelho | Portfólio TI & Dados</title>
+    <title>Jhonatan Lima | Portfólio TI & Dados</title>
     
+    <!-- Favicon -->
+    <link rel="icon" href="images/jhonatan/Logotipo.png" type="image/png">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -271,9 +274,12 @@
 
         .hero-photo-wrapper {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 100%;
+            min-height: 450px;
+            position: relative;
         }
 
         .hero-photo-frame {
@@ -285,6 +291,10 @@
             padding: 3px;
             background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             box-shadow: 0 0 35px var(--glow-red);
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.8s ease;
+            z-index: 10;
         }
 
         .hero-photo-frame img {
@@ -294,6 +304,38 @@
             border-radius: 17px;
             background: #18181c;
             display: block;
+            pointer-events: none;
+        }
+
+        /* Botão Restaurar Jhonatan.exe */
+        .restore-container {
+            position: absolute;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .restore-container.show {
+            display: block;
+        }
+
+        .btn-restore {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px dashed var(--primary-red);
+            color: var(--primary-red);
+            font-family: var(--font-code);
+            font-size: 0.78rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--glow-red);
+        }
+
+        .btn-restore:hover {
+            background: var(--primary-red);
+            color: #ffffff;
+            transform: scale(1.05);
         }
 
         .section-title {
@@ -709,45 +751,85 @@
             border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        /* ==========================================
-           NOVA SEÇÃO DE CURSOS E CERTIFICAÇÕES (LISTA)
-           ========================================== */
-        .cert-list-wrapper {
+        /* CURSOS E CERTIFICAÇÕES */
+        .cert-tabs-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 80px;
+        }
+
+        .cert-tabs-header {
             display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 15px;
+        }
+
+        .cert-tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cert-tab-btn:hover, .cert-tab-btn.active {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: var(--primary-red);
+            color: #ffffff;
+            box-shadow: 0 0 10px var(--glow-red);
+        }
+
+        .cert-tab-panel {
+            display: none;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: 25px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .cert-tab-panel.active {
+            display: flex;
         }
 
         .cert-row-item {
-            background: var(--card-bg);
+            background: rgba(8, 8, 10, 0.5);
             border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 16px 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             gap: 15px;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .cert-row-item:hover {
-            border-color: var(--primary-red);
-            background: rgba(239, 68, 68, 0.04);
-            transform: translateX(4px);
-            box-shadow: 0 4px 15px var(--glow-red);
+            border-color: rgba(239, 68, 68, 0.4);
+            background: rgba(239, 68, 68, 0.02);
         }
 
         .cert-row-info {
             display: flex;
             align-items: center;
             gap: 15px;
+            width: 100%;
         }
 
-        .cert-row-icon {
-            color: var(--primary-red);
-            font-size: 1.3rem;
+        .cert-platform-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--card-border);
+            background: #18181c;
+            flex-shrink: 0;
         }
 
         .cert-row-text h5 {
@@ -761,189 +843,6 @@
             color: var(--text-muted);
             font-family: var(--font-code);
             margin-top: 2px;
-        }
-
-        .cert-row-action {
-            font-size: 0.85rem;
-            color: var(--primary-red);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        .cert-hidden {
-            display: none;
-        }
-
-        .cert-toggle-container {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        /* PROJETOS: 2 CARDS POR LINHA */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 28px;
-            margin-bottom: 80px;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: var(--card-border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px var(--glow-red);
-        }
-
-        .project-thumbnail {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--card-border);
-            background: #18181c;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-thumbnail {
-            transform: scale(1.03);
-        }
-
-        .project-content {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-
-        .project-card h4 {
-            font-size: 1.4rem;
-            margin-bottom: 14px;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .project-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 18px;
-        }
-
-        .project-tech-stack {
-            font-size: 0.9rem;
-            color: var(--primary-red);
-            font-family: var(--font-code);
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-
-        .project-diff-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 24px;
-            font-size: 0.92rem;
-            color: var(--text-muted);
-        }
-
-        .project-diff-list li {
-            position: relative;
-            padding-left: 18px;
-        }
-
-        .project-diff-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary-red);
-            font-weight: bold;
-        }
-
-        /* MODAL */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-box {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 18px;
-            max-width: 680px;
-            width: 100%;
-            padding: 35px;
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-overlay.active .modal-box {
-            transform: translateY(0);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 22px;
-            right: 22px;
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .modal-close:hover {
-            color: var(--primary-red);
-        }
-
-        .modal-title {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--text-main);
-        }
-
-        .modal-description {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 22px;
         }
 
         /* IDIOMAS */
@@ -1056,7 +955,6 @@
 
         .tech-badge-item i {
             font-size: 1.5rem;
-            color: var(--primary-red);
         }
 
         .tech-badge-info h5 {
@@ -1068,6 +966,98 @@
         .tech-badge-info p {
             font-size: 0.8rem;
             color: var(--text-muted);
+        }
+
+        /* PROJETOS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            margin-bottom: 80px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px var(--glow-red);
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--card-border);
+            background: #18181c;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-thumbnail {
+            transform: scale(1.03);
+        }
+
+        .project-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .project-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 14px;
+        }
+
+        .project-tech-stack {
+            font-size: 0.82rem;
+            color: var(--primary-red);
+            font-family: var(--font-code);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .project-diff-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 20px;
+            font-size: 0.86rem;
+            color: var(--text-muted);
+        }
+
+        .project-diff-list li {
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .project-diff-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
         }
 
         /* CONTATO */
@@ -1144,31 +1134,6 @@
             margin: 0;
         }
 
-        #toast {
-            visibility: hidden;
-            min-width: 260px;
-            background: var(--primary-red);
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 14px;
-            position: fixed;
-            z-index: 3000;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            box-shadow: 0 0 15px var(--glow-red);
-            font-weight: 600;
-        }
-
-        #toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-
-        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
-        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
-
         footer {
             text-align: center;
             padding: 35px;
@@ -1176,6 +1141,12 @@
             border-top: 1px solid var(--card-border);
             font-size: 0.9rem;
             margin-top: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 992px) {
@@ -1202,9 +1173,6 @@
             .languages-grid-three {
                 grid-template-columns: 1fr;
             }
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1228,6 +1196,9 @@
             }
             .hero-text h1 {
                 font-size: 2.6rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
             .contact-box {
                 padding: 35px 20px;
@@ -1253,7 +1224,7 @@
             <ul id="nav-menu">
                 <li><a href="#formacao">Formação</a></li>
                 <li><a href="#experiencia">Experiência</a></li>
-                <li><a href="#competencia">Competência</a></li>
+                <li><a href="#competencia">Habilidades</a></li>
                 <li><a href="#certificacoes">Certificações</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
@@ -1281,17 +1252,20 @@
                 <p>Profissional de TI com experiência em suporte, sistemas e análise de dados. Formado em ADS e estudante de Data Science na FIAP, busco unir tecnologia e dados para desenvolver soluções eficientes e gerar valor ao negócio.</p>
                 
                 <div class="cto-buttons">
-                    <a href="#curriculo" class="btn btn-primary"><i class="fa-solid fa-file-arrow-down"></i> Currículo</a>
-                    <a href="javascript:void(0)" onclick="copyEmail()" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> E-mail</a>
-                    <a href="https://github.com/jhonatanlima25" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
-                    <a href="https://linkedin.com/in/jhonatanlima25" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    <a href="images/curriculo/curriculo.pdf" target="_blank" class="btn btn-primary" download><i class="fa-solid fa-file-arrow-down"></i> Currículo</a>
+                    <a href="mailto:Jhonatanlimacoelho25@gmail.com" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> E-mail</a>
+                    <a href="https://github.com/Jheex" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/jhonatanlima25/" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
                     <a href="https://wa.me/5511981382542" target="_blank" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
                 </div>
             </div>
 
             <div class="hero-photo-wrapper">
-                <div class="hero-photo-frame">
+                <div class="hero-photo-frame" id="gravity-photo" title="Clique para derrubar!">
                     <img src="images/jhonatan/foto.png" alt="Jhonatan Lima Coelho" onerror="this.src='https://via.placeholder.com/450x450/121215/ef4444?text=Jhonatan+Coelho'">
+                </div>
+                <div id="restore-container" class="restore-container">
+                    <button class="btn-restore" onclick="restorePhoto()">restaurar Jhonatan.exe</button>
                 </div>
             </div>
         </section>
@@ -1316,7 +1290,7 @@
                     </div>
 
                     <details class="academic-details">
-                        <summary>Ver Grade Curricular Completa & Banner</summary>
+                        <summary>Grade Curricular</summary>
                         <div class="academic-expanded-content">
                             <div class="academic-banner-box">
                                 <img src="images/faculdades/fiap.jpg" alt="Banner FIAP" onerror="this.src='https://via.placeholder.com/1200x200/18181c/ef4444?text=FIAP+Campus'">
@@ -1372,7 +1346,7 @@
                     </div>
 
                     <details class="academic-details">
-                        <summary>Ver Grade Curricular Completa & Banner</summary>
+                        <summary>Grade Curricular</summary>
                         <div class="academic-expanded-content">
                             <div class="academic-banner-box">
                                 <img src="images/faculdades/unip.jpg" alt="Banner UNIP" onerror="this.src='https://via.placeholder.com/1200x200/18181c/ef4444?text=UNIP+Campus'">
@@ -1554,7 +1528,7 @@
             </div>
         </section>
 
-        <!-- Competência -->
+        <!-- Habilidades Técnicas -->
         <section id="competencia">
             <h3 class="section-title section-title-center"><i class="fa-solid fa-language"></i> Idiomas</h3>
             <div class="languages-grid-three">
@@ -1583,7 +1557,7 @@
                 </div>
             </div>
 
-            <h3 class="section-title" style="margin-top: 50px;"><i class="fa-solid fa-gears"></i> Competência / Habilidades Técnicas</h3>
+            <h3 class="section-title" style="margin-top: 50px;"><i class="fa-solid fa-gears"></i> Habilidades</h3>
             <p class="academic-intro">Meu ecossistema tecnológico abrange desde a infraestrutura e suporte técnico até o desenvolvimento full-stack, design e engenharia de dados. Navegue pelas categorias abaixo:</p>
 
             <div class="skills-tabs-container">
@@ -1596,477 +1570,158 @@
                 </div>
 
                 <div id="tab-dev" class="skill-tab-panel active">
-                    <div class="tech-badge-item"><i class="fa-brands fa-python"></i><div class="tech-badge-info"><h5>Python</h5><p>Automação e Scripts</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-brands fa-php"></i><div class="tech-badge-info"><h5>PHP</h5><p>Desenvolvimento Web</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-code"></i><div class="tech-badge-info"><h5>C#</h5><p>Programação Orientada a Objetos</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-code-branch"></i><div class="tech-badge-info"><h5>.NET</h5><p>Ecossistema e Aplicações</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-layer-group"></i><div class="tech-badge-info"><h5>Django</h5><p>Framework Web Python</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-window-maximize"></i><div class="tech-badge-info"><h5>Streamlit</h5><p>Aplicações Web de Dados</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-file-code"></i><div class="tech-badge-info"><h5>HTML & CSS</h5><p>Marcação e Estilização Web</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-mobile-screen"></i><div class="tech-badge-info"><h5>Dart</h5><p>Desenvolvimento Mobile</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-code"></i><div class="tech-badge-info"><h5>VBA</h5><p>Automação de Planilhas</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-code-merge"></i><div class="tech-badge-info"><h5>Git</h5><p>Controle de Versão</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-laptop-code"></i><div class="tech-badge-info"><h5>Dreamweaver</h5><p>Editor e Ferramenta Web</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-server"></i><div class="tech-badge-info"><h5>XAMPP</h5><p>Ambiente Local de Servidor</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-brands fa-python" style="color: #3776AB;"></i><div class="tech-badge-info"><h5>Python</h5><p>Automação e Scripts</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-brands fa-php" style="color: #777BB3;"></i><div class="tech-badge-info"><h5>PHP</h5><p>Desenvolvimento Web</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-code" style="color: #68217A;"></i><div class="tech-badge-info"><h5>C#</h5><p>Programação Orientada a Objetos</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-code-branch" style="color: #512BD4;"></i><div class="tech-badge-info"><h5>.NET</h5><p>Ecossistema e Aplicações</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-layer-group" style="color: #44B78B;"></i><div class="tech-badge-info"><h5>Django</h5><p>Framework Web Python</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-window-maximize" style="color: #FF4B4B;"></i><div class="tech-badge-info"><h5>Streamlit</h5><p>Aplicações Web de Dados</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-file-code" style="color: #E34F26;"></i><div class="tech-badge-info"><h5>HTML & CSS</h5><p>Marcação e Estilização Web</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-mobile-screen" style="color: #0175C2;"></i><div class="tech-badge-info"><h5>Dart</h5><p>Desenvolvimento Mobile</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-code" style="color: #217346;"></i><div class="tech-badge-info"><h5>VBA</h5><p>Automação de Planilhas</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-code-merge" style="color: #F05032;"></i><div class="tech-badge-info"><h5>Git</h5><p>Controle de Versão</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-laptop-code" style="color: #FF7300;"></i><div class="tech-badge-info"><h5>Dreamweaver</h5><p>Editor e Ferramenta Web</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-server" style="color: #FB7A24;"></i><div class="tech-badge-info"><h5>XAMPP</h5><p>Ambiente Local de Servidor</p></div></div>
                 </div>
 
                 <div id="tab-data" class="skill-tab-panel">
-                    <div class="tech-badge-item"><i class="fa-solid fa-database"></i><div class="tech-badge-info"><h5>MySQL & SQL Server</h5><p>Gestão de Bancos Relacionais</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-chart-line"></i><div class="tech-badge-info"><h5>Excel</h5><p>Planilhas, Fórmulas e Dashboards</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-chart-pie"></i><div class="tech-badge-info"><h5>Power BI</h5><p>Visualização e ETL</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-chart-bar"></i><div class="tech-badge-info"><h5>Looker Studio</h5><p>Relatórios e Dashboards em Nuvem</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-table"></i><div class="tech-badge-info"><h5>Pandas</h5><p>Manipulação e Análise de Dados</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-database" style="color: #00758F;"></i><div class="tech-badge-info"><h5>MySQL & SQL Server</h5><p>Gestão de Bancos Relacionais</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-chart-line" style="color: #217346;"></i><div class="tech-badge-info"><h5>Excel</h5><p>Planilhas, Fórmulas e Dashboards</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-chart-pie" style="color: #F2C811;"></i><div class="tech-badge-info"><h5>Power BI</h5><p>Visualização e ETL</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-chart-bar" style="color: #4285F4;"></i><div class="tech-badge-info"><h5>Looker Studio</h5><p>Relatórios e Dashboards em Nuvem</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-table-cells" style="color: #130D3B;"></i><div class="tech-badge-info"><h5>Pandas</h5><p>Manipulação e Análise de Dados</p></div></div>
                 </div>
 
                 <div id="tab-infra" class="skill-tab-panel">
-                    <div class="tech-badge-item"><i class="fa-solid fa-network-wired"></i><div class="tech-badge-info"><h5>Redes</h5><p>Configuração e Suporte Local</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-computer"></i><div class="tech-badge-info"><h5>Windows</h5><p>Sistemas Operacionais e Suporte</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-brands fa-linux"></i><div class="tech-badge-info"><h5>Linux</h5><p>Ambientes e Servidores</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-headset"></i><div class="tech-badge-info"><h5>Suporte N1 / N2</h5><p>Atendimento a Usuários e Ativos</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-cloud"></i><div class="tech-badge-info"><h5>AWS, Azure & OCI</h5><p>Computação em Nuvem</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-globe" style="color: #00A4EF;"></i><div class="tech-badge-info"><h5>Redes</h5><p>Configuração e Suporte Local</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-computer" style="color: #0078D6;"></i><div class="tech-badge-info"><h5>Windows</h5><p>Sistemas Operacionais e Suporte</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-brands fa-linux" style="color: #FCC624;"></i><div class="tech-badge-info"><h5>Linux</h5><p>Ambientes e Servidores</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-screwdriver-wrench" style="color: #EF4444;"></i><div class="tech-badge-info"><h5>Manutenção de Computadores</h5><p>Hardware, Montagem e Reparos</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-headset" style="color: #10B981;"></i><div class="tech-badge-info"><h5>Suporte N1 / N2</h5><p>Atendimento a Usuários e Ativos</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-brands fa-aws" style="color: #FF9900;"></i><div class="tech-badge-info"><h5>AWS</h5><p>Amazon Web Services</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-brands fa-microsoft" style="color: #0078D4;"></i><div class="tech-badge-info"><h5>Azure</h5><p>Microsoft Cloud</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-cloud" style="color: #C74634;"></i><div class="tech-badge-info"><h5>OCI</h5><p>Oracle Cloud Infrastructure</p></div></div>
                 </div>
 
                 <div id="tab-systems" class="skill-tab-panel">
-                    <div class="tech-badge-item"><i class="fa-solid fa-building-user"></i><div class="tech-badge-info"><h5>TOTVS Protheus</h5><p>Sistema ERP Corporativo</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-industry"></i><div class="tech-badge-info"><h5>Aoki E2Corp</h5><p>ERP e Gestão Operacional</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-presentation-screen"></i><div class="tech-badge-info"><h5>PowerPoint</h5><p>Apresentações Profissionais</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-file-word"></i><div class="tech-badge-info"><h5>Word</h5><p>Editor de Documentos</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-envelope"></i><div class="tech-badge-info"><h5>Outlook</h5><p>Gestão de E-mails e Agenda</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-users"></i><div class="tech-badge-info"><h5>Teams</h5><p>Comunicação e Colaboração</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-building-user" style="color: #0055A5;"></i><div class="tech-badge-info"><h5>TOTVS Protheus</h5><p>Sistema ERP Corporativo</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-industry" style="color: #E53935;"></i><div class="tech-badge-info"><h5>Aoki E2Corp</h5><p>ERP e Gestão Operacional</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-briefcase" style="color: #2FC7F7;"></i><div class="tech-badge-info"><h5>Bitrix24</h5><p>CRM e Gestão de Processos</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-desktop" style="color: #EF4444;"></i><div class="tech-badge-info"><h5>Anydesk</h5><p>Acesso Remoto e Suporte</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-file-powerpoint" style="color: #D24726;"></i><div class="tech-badge-info"><h5>PowerPoint</h5><p>Apresentações Profissionais</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-file-word" style="color: #2B579A;"></i><div class="tech-badge-info"><h5>Word</h5><p>Editor de Documentos</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-envelope" style="color: #0078D4;"></i><div class="tech-badge-info"><h5>Outlook</h5><p>Gestão de E-mails e Agenda</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-users" style="color: #6264A7;"></i><div class="tech-badge-info"><h5>Teams</h5><p>Comunicação e Colaboração</p></div></div>
                 </div>
 
                 <div id="tab-design" class="skill-tab-panel">
-                    <div class="tech-badge-item"><i class="fa-solid fa-palette"></i><div class="tech-badge-info"><h5>Photoshop</h5><p>Edição e Tratamento de Imagens</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-pen-nib"></i><div class="tech-badge-info"><h5>Adobe Illustrator</h5><p>Design Vetorial</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-book-open"></i><div class="tech-badge-info"><h5>Adobe InDesign</h5><p>Editoração e Publicação</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-compact-disc"></i><div class="tech-badge-info"><h5>Adobe Flash</h5><p>Animação e Mídia Interativa</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-vector-square"></i><div class="tech-badge-info"><h5>CorelDraw</h5><p>Ilustração Vetorial</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-brands fa-figma"></i><div class="tech-badge-info"><h5>Figma</h5><p>UI/UX Design & Prototipagem</p></div></div>
-                    <div class="tech-badge-item"><i class="fa-solid fa-wand-magic-sparkles"></i><div class="tech-badge-info"><h5>Canva</h5><p>Design Ágil</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-palette" style="color: #31A8FF;"></i><div class="tech-badge-info"><h5>Photoshop</h5><p>Edição e Tratamento de Imagens</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-pen-nib" style="color: #FF9A00;"></i><div class="tech-badge-info"><h5>Adobe Illustrator</h5><p>Design Vetorial</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-book-open" style="color: #FF3366;"></i><div class="tech-badge-info"><h5>Adobe InDesign</h5><p>Editoração e Publicação</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-compact-disc" style="color: #990000;"></i><div class="tech-badge-info"><h5>Adobe Flash</h5><p>Animação e Mídia Interativa</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-vector-square" style="color: #FF7200;"></i><div class="tech-badge-info"><h5>CorelDraw</h5><p>Ilustração Vetorial</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-brands fa-figma" style="color: #F24E1E;"></i><div class="tech-badge-info"><h5>Figma</h5><p>UI/UX Design & Prototipagem</p></div></div>
+                    <div class="tech-badge-item"><i class="fa-solid fa-wand-magic-sparkles" style="color: #00C4CC;"></i><div class="tech-badge-info"><h5>Canva</h5><p>Design Ágil</p></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- ==========================================
-           SEÇÃO DE CURSOS E CERTIFICAÇÕES (FORMATO LISTA + VER MAIS)
-           ========================================== -->
+        <!-- Cursos e Certificações -->
         <section id="certificacoes">
             <h3 class="section-title"><i class="fa-solid fa-certificate"></i> Cursos e Certificações</h3>
-            <p class="academic-intro">Lista completa de cursos e certificações obtidos ao longo da minha trajetória. Clique em qualquer item para visualizar o comprovante e acessar o link oficial autenticado (quando disponível).</p>
+            <p class="academic-intro">Navegue pelas categorias abaixo para explorar minhas certificações e cursos concluídos em ordem cronológica.</p>
 
-            <div class="cert-list-wrapper" id="cert-list">
-                
-                <!-- 1 a 8 (Visíveis por padrão) -->
-                <div class="cert-row-item" onclick="openCertModal('Dominando Internet Of Things', ['images/certificados/fiap_iot.png'], 'https://fiap.com.br/validar-certificado')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Dominando Internet Of Things</h5>
-                            <p>FIAP • 2026</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
+            <div class="cert-tabs-container">
+                <div class="cert-tabs-header">
+                    <button class="cert-tab-btn active" onclick="switchCertTab(event, 'cert-dados')"><i class="fa-solid fa-database"></i> Dados & IA</button>
+                    <button class="cert-tab-btn" onclick="switchCertTab(event, 'cert-dev')"><i class="fa-solid fa-code"></i> Desenvolvimento & Web</button>
+                    <button class="cert-tab-btn" onclick="switchCertTab(event, 'cert-infra')"><i class="fa-solid fa-shield-halved"></i> Infra & Segurança</button>
+                    <button class="cert-tab-btn" onclick="switchCertTab(event, 'cert-design')"><i class="fa-solid fa-pen-nib"></i> Design & UI/UX</button>
+                    <button class="cert-tab-btn" onclick="switchCertTab(event, 'cert-idiomas')"><i class="fa-solid fa-globe"></i> Idiomas</button>
+                    <button class="cert-tab-btn" onclick="switchCertTab(event, 'cert-gestao')"><i class="fa-solid fa-briefcase"></i> Gestão & Carreira</button>
                 </div>
 
-                <div class="cert-row-item" onclick="openCertModal('Matemática para Data Science', ['images/certificados/alura_math.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Matemática para Data Science</h5>
-                            <p>Alura • 2026</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
+                <div id="cert-dados" class="cert-tab-panel active">
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fiap.jpeg" alt="FIAP" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=FIAP'"><div class="cert-row-text"><h5>Dominando Internet Of Things</h5><p>FIAP • Mar 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/alura.jpeg" alt="Alura" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Alura'"><div class="cert-row-text"><h5>Matemática para Data Science</h5><p>Alura • Feb 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/alura.jpeg" alt="Alura" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Alura'"><div class="cert-row-text"><h5>Python para Dados: Primeiros Passos</h5><p>Alura • Feb 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/cisco.jpeg" alt="Cisco" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Cisco'"><div class="cert-row-text"><h5>Introduction to Data Science</h5><p>Cisco • Mar 2025</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/microsoft.jpeg" alt="Microsoft" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=MS'"><div class="cert-row-text"><h5>Princípios básicos do aprendizado de máquina</h5><p>Microsoft Learn • Oct 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/bradesco.jpeg" alt="Bradesco" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Bradesco'"><div class="cert-row-text"><h5>Implementando Banco de Dados</h5><p>Bradesco • May 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/senai.jpeg" alt="SENAI" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=SENAI'"><div class="cert-row-text"><h5>Desvendando a Blockchain</h5><p>SENAI • May 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/senai.jpeg" alt="SENAI" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=SENAI'"><div class="cert-row-text"><h5>Ética na Inteligência Artificial</h5><p>SENAI • Apr 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/cisco.jpeg" alt="Cisco" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Cisco'"><div class="cert-row-text"><h5>Introduction to IoT</h5><p>Cisco • Oct 2024</p></div></div></div>
                 </div>
 
-                <div class="cert-row-item" onclick="openCertModal('Lógica de programação', ['images/certificados/fiap_logica.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Lógica de programação</h5>
-                            <p>FIAP • 2026</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
+                <div id="cert-dev" class="cert-tab-panel">
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fiap.jpeg" alt="FIAP" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=FIAP'"><div class="cert-row-text"><h5>Engenharia de Software</h5><p>FIAP • Mar 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fiap.jpeg" alt="FIAP" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=FIAP'"><div class="cert-row-text"><h5>Lógica de programação</h5><p>FIAP • Feb 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/cisco.jpeg" alt="Cisco" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Cisco'"><div class="cert-row-text"><h5>Python Essentials 1</h5><p>Cisco • Oct 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/senai.jpeg" alt="SENAI" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=SENAI'"><div class="cert-row-text"><h5>Fundamentos do Python 1</h5><p>SENAI • Sep 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/bradesco.jpeg" alt="Bradesco" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Bradesco'"><div class="cert-row-text"><h5>Crie um site simples usando HTML, CSS e JavaScript</h5><p>Fundação Bradesco • Nov 2024</p></div></div></div>
                 </div>
 
-                <div class="cert-row-item" onclick="openCertModal('Python para Dados: Primeiros Passos', ['images/certificados/alura_python.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Python para Dados: Primeiros Passos</h5>
-                            <p>Alura • 2026</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
+                <div id="cert-infra" class="cert-tab-panel">
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fiap.jpeg" alt="FIAP" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=FIAP'"><div class="cert-row-text"><h5>Cybersecurity</h5><p>FIAP • Mar 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/cisco.jpeg" alt="Cisco" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Cisco'"><div class="cert-row-text"><h5>Computer Hardware Basics</h5><p>Cisco • Sep 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/bradesco.jpeg" alt="Bradesco" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Bradesco'"><div class="cert-row-text"><h5>Fundamentos de TI: Hardware e Software</h5><p>Bradesco • Mar 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/bradesco.jpeg" alt="Bradesco" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Bradesco'"><div class="cert-row-text"><h5>Segurança em Tecnologia da Informação</h5><p>Bradesco • Mar 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/senai.jpeg" alt="SENAI" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=SENAI'"><div class="cert-row-text"><h5>Por dentro da Segurança Cibernética</h5><p>SENAI • Apr 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/senai.jpeg" alt="SENAI" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=SENAI'"><div class="cert-row-text"><h5>Competência Transversal: TIC</h5><p>SENAI • May 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>Windows 10</h5><p>Fisk • May 2018</p></div></div></div>
                 </div>
 
-                <div class="cert-row-item" onclick="openCertModal('Cybersecurity', ['images/certificados/fiap_cyber.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Cybersecurity</h5>
-                            <p>FIAP • 2026</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
+                <div id="cert-design" class="cert-tab-panel">
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>Adobe Flash</h5><p>Fisk • May 2021</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>Adobe InDesign</h5><p>Fisk • Nov 2020</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>Adobe Illustrator</h5><p>Fisk • Sep 2020</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>Adobe Dreamweaver</h5><p>Fisk • Sep 2020</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>Adobe Photoshop</h5><p>Fisk • Oct 2019</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>CorelDRAW</h5><p>Fisk • Jun 2019</p></div></div></div>
                 </div>
 
-                <div class="cert-row-item" onclick="openCertModal('Espanhol - Conhecendo novas pessoas', ['images/certificados/espanhol1.png', 'images/certificados/espanhol2.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Espanhol - Conhecendo novas pessoas</h5>
-                            <p>Alura • 2026</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
+                <div id="cert-idiomas" class="cert-tab-panel">
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/alura.jpeg" alt="Alura" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Alura'"><div class="cert-row-text"><h5>Espanhol - Conhecendo novas pessoas</h5><p>Alura • Feb 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>Michigan English Test (MET)</h5><p>Fisk • Apr 2022</p></div></div></div>
                 </div>
 
-                <div class="cert-row-item" onclick="openCertModal('Introduction to Data Science', ['images/certificados/cisco_ds.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Introduction to Data Science</h5>
-                            <p>Cisco • 2025</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
+                <div id="cert-gestao" class="cert-tab-panel">
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fiap.jpeg" alt="FIAP" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=FIAP'"><div class="cert-row-text"><h5>Comunicação</h5><p>FIAP • Mar 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fiap.jpeg" alt="FIAP" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=FIAP'"><div class="cert-row-text"><h5>Matemática - FIAP</h5><p>FIAP • Feb 2026</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/even3.jpeg" alt="Even3" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Even3'"><div class="cert-row-text"><h5>2ª Jornada Tecnológica UNIP Anchieta</h5><p>Even3 • Oct 2025</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/sebrae.jpeg" alt="SEBRAE" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Sebrae'"><div class="cert-row-text"><h5>Gestão Financeira</h5><p>SEBRAE • Nov 2024</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/sodiprom.jpeg" alt="Sodiprom" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Sodiprom'"><div class="cert-row-text"><h5>Formação Básica para o Mundo do Trabalho</h5><p>Sodiprom • Dec 2022</p></div></div></div>
+                    <div class="cert-row-item"><div class="cert-row-info"><img src="images/cursos/fisk.jpeg" alt="Fisk" class="cert-platform-logo" onerror="this.src='https://via.placeholder.com/38x38/18181c/ef4444?text=Fisk'"><div class="cert-row-text"><h5>Pacote Office (Word, Excel e PowerPoint)</h5><p>Fisk • May 2018</p></div></div></div>
                 </div>
-
-                <div class="cert-row-item" onclick="openCertModal('2ª Jornada Tecnológica UNIP Anchieta', ['images/certificados/jornada_unip1.png', 'images/certificados/jornada_unip2.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>2ª Jornada Tecnológica UNIP Anchieta</h5>
-                            <p>UNIP • 2025</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <!-- 9 em diante (Ocultos inicialmente pelo botão "Ver mais") -->
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Princípios básicos de Machine Learning', ['images/certificados/ms_ml.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Princípios básicos de Machine Learning</h5>
-                            <p>Microsoft Learn • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Implementando Banco de Dados', ['images/certificados/bradesco_db.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Implementando Banco de Dados</h5>
-                            <p>Bradesco • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Desvendando a Blockchain', ['images/certificados/senai_blockchain.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Desvendando a Blockchain</h5>
-                            <p>SENAI • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Ética na Inteligência Artificial', ['images/certificados/senai_etica.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Ética na Inteligência Artificial</h5>
-                            <p>SENAI • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Introduction to IoT', ['images/certificados/cisco_iot.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Introduction to IoT</h5>
-                            <p>Cisco • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Python Essentials 1', ['images/certificados/cisco_python.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Python Essentials 1</h5>
-                            <p>Cisco • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Fundamentos do Python 1', ['images/certificados/senai_python.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Fundamentos do Python 1</h5>
-                            <p>SENAI • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Crie um site simples usando HTML, CSS e JavaScript', ['images/certificados/bradesco_web.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Crie um site simples usando HTML, CSS e JavaScript</h5>
-                            <p>Bradesco • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Fundamentos de TI: Hardware e Software', ['images/certificados/bradesco_ti.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Fundamentos de TI: Hardware e Software</h5>
-                            <p>Bradesco • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Computer Hardware Basics', ['images/certificados/cisco_hw.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Computer Hardware Basics</h5>
-                            <p>Cisco • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Segurança em Tecnologia da Informação', ['images/certificados/bradesco_sec.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Segurança em Tecnologia da Informação</h5>
-                            <p>Bradesco • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Por dentro da Segurança Cibernética', ['images/certificados/senai_sec.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Por dentro da Segurança Cibernética</h5>
-                            <p>SENAI • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Gestão Financeira', ['images/certificados/sebrae_gestao.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Gestão Financeira</h5>
-                            <p>SEBRAE • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Competência Transversal: TIC', ['images/certificados/senai_tic.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Competência Transversal: TIC</h5>
-                            <p>SENAI • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Matemática - FIAP', ['images/certificados/fiap_mat.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Matemática - FIAP</h5>
-                            <p>FIAP • 2026</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Introdução à Construção de Carreira', ['images/certificados/estudante_dev.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Introdução à Construção de Carreira</h5>
-                            <p>Estudante.dev • 2024</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Michigan English Test (MET)', ['images/certificados/met.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Michigan English Test (MET)</h5>
-                            <p>2022</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Formação Básica para o Mundo do Trabalho', ['images/certificados/sodiprom.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Formação Básica para o Mundo do Trabalho</h5>
-                            <p>Sodiprom • 2022</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Adobe Flash', ['images/certificados/flash.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Adobe Flash</h5>
-                            <p>2021</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Adobe Illustrator', ['images/certificados/illustrator.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Adobe Illustrator</h5>
-                            <p>2020</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Adobe InDesign', ['images/certificados/indesign.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Adobe InDesign</h5>
-                            <p>2020</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Adobe Dreamweaver', ['images/certificados/dreamweaver.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Adobe Dreamweaver</h5>
-                            <p>2020</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Adobe Photoshop', ['images/certificados/photoshop.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Adobe Photoshop</h5>
-                            <p>2019</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('CorelDRAW', ['images/certificados/coreldraw.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>CorelDRAW</h5>
-                            <p>2019</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Pacote Office (Word, Excel e PowerPoint)', ['images/certificados/office.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Pacote Office (Word, Excel e PowerPoint)</h5>
-                            <p>2018</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-                <div class="cert-row-item cert-hidden" onclick="openCertModal('Windows 10', ['images/certificados/fisk_win.png'], '')">
-                    <div class="cert-row-info">
-                        <i class="fa-solid fa-award cert-row-icon"></i>
-                        <div class="cert-row-text">
-                            <h5>Windows 10</h5>
-                            <p>Fisk • 2018</p>
-                        </div>
-                    </div>
-                    <span class="cert-row-action"><i class="fa-solid fa-eye"></i> Visualizar</span>
-                </div>
-
-            </div>
-
-            <!-- Botão Ver Mais -->
-            <div class="cert-toggle-container">
-                <button id="toggle-cert-btn" class="btn btn-outline" onclick="toggleCertificates()">
-                    <i class="fa-solid fa-chevron-down"></i> Ver mais certificados (23 ocultos)
-                </button>
             </div>
         </section>
 
         <!-- Projetos em Destaque -->
         <section id="projetos">
             <h3 class="section-title"><i class="fa-solid fa-diagram-project"></i> Projetos em Destaque</h3>
-            <p class="academic-intro">Nesta seção, apresento uma seleção de projetos que refletem minha capacidade de transformar ideias em produtos digitais funcionais. Aqui você encontrará desde aplicações Full Stack robustas, desenvolvidas com Django e bancos de dados relacionais, até ecossistemas web focados em UX/UI e performance.</p>
+            <p class="academic-intro">Uma seleção de projetos corporativos, aplicações web full-stack, soluções em engenharia de dados e integrações via API que refletem minha atuação técnica.</p>
             
             <div class="projects-grid">
                 <!-- Projeto 1 -->
                 <div class="project-card">
-                    <img src="images/projetos/achadinhos.png" alt="Achadinhos da Ana" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=Achadinhos+da+Ana'">
+                    <img src="images/projetos/VittaVision.png" alt="VittaVision" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=VittaVision'">
                     <div class="project-content">
                         <div>
-                            <h4>🛍️ Achadinhos da Ana</h4>
-                            <p>Aplicação web desenvolvida com Django, utilizando banco de dados relacional para gerenciamento dinâmico de produtos. Sistema estruturado com backend robusto, rotas organizadas e renderização dinâmica de conteúdo.</p>
-                            <div class="project-tech-stack">Python • Django • Banco de Dados SQL • HTML • CSS • JavaScript</div>
+                            <h4>🩺 VittaVision</h4>
+                            <p>Dashboard analítico para saúde corporativa integrado a banco de dados relacional com Streamlit.</p>
+                            <div class="project-tech-stack">Python • Streamlit • Oracle DB • Pandas</div>
                             <ul class="project-diff-list">
-                                <li>Backend estruturado em Django</li>
-                                <li>Integração com banco de dados</li>
-                                <li>Renderização dinâmica de dados</li>
-                                <li>Deploy em ambiente cloud (Render)</li>
-                                <li>Arquitetura MVC (Model-View-Template)</li>
+                                <li>Conexão segura com Oracle Database</li>
+                                <li>Visualização interativa de indicadores</li>
+                                <li>Arquitetura voltada a analytics</li>
                             </ul>
                         </div>
-                        <div>
-                            <a href="https://achadinhos-da-ana.onrender.com/" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                        <div style="display: flex; gap: 8px;">
+                            <a href="https://vittavision-haubb3u7kaa3buqtetzxy9.streamlit.app/?page=Dashboard" target="_blank" class="btn btn-outline" style="flex: 1; justify-content: center;">
                                 <i class="fa-solid fa-link"></i> Acessar Projeto
+                            </a>
+                            <a href="https://github.com/Jheex/VittaVision" target="_blank" class="btn btn-outline" style="padding: 10px 14px; justify-content: center;" title="Repositório GitHub">
+                                <i class="fa-brands fa-github"></i>
                             </a>
                         </div>
                     </div>
@@ -2074,16 +1729,41 @@
 
                 <!-- Projeto 2 -->
                 <div class="project-card">
+                    <img src="images/projetos/AchadinhosAna.png" alt="Achadinhos da Ana" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=Achadinhos+da+Ana'">
+                    <div class="project-content">
+                        <div>
+                            <h4>🛍️ Achadinhos da Ana</h4>
+                            <p>Aplicação web Full Stack em Django com banco de dados relacional.</p>
+                            <div class="project-tech-stack">Python • Django • SQL • HTML/CSS • Render</div>
+                            <ul class="project-diff-list">
+                                <li>Backend robusto em Django (MVC)</li>
+                                <li>Gerenciamento dinâmico de produtos</li>
+                                <li>Deploy ativo em nuvem</li>
+                            </ul>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <a href="https://achadinhos-da-ana.onrender.com/" target="_blank" class="btn btn-outline" style="flex: 1; justify-content: center;">
+                                <i class="fa-solid fa-link"></i> Acessar Projeto
+                            </a>
+                            <a href="https://github.com/Jheex/Achadinhos_da_Ana" target="_blank" class="btn btn-outline" style="padding: 10px 14px; justify-content: center;" title="Repositório GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card">
                     <img src="images/projetos/solutiuns.png" alt="Solutiuns Technologies" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=Solutiuns+Technologies'">
                     <div class="project-content">
                         <div>
                             <h4>🌐 Solutiuns Technologies</h4>
-                            <p>Website institucional moderno e responsivo focado em Engenharia de Sistemas, Infraestrutura e Segurança Digital. O projeto prioriza usabilidade e experiência do usuário com navegação fluida e design limpo.</p>
+                            <p>Website institucional moderno focado em engenharia de sistemas e segurança.</p>
                             <div class="project-tech-stack">HTML • CSS • JavaScript • PHP</div>
                             <ul class="project-diff-list">
-                                <li>Layout responsivo para desktop e mobile</li>
-                                <li>Estrutura semântica e SEO básico</li>
-                                <li>Navegação intuitiva e otimizada</li>
+                                <li>Design responsivo e limpo</li>
+                                <li>Navegação fluida e semântica</li>
+                                <li>Foco em usabilidade e UX</li>
                             </ul>
                         </div>
                         <div>
@@ -2094,18 +1774,18 @@
                     </div>
                 </div>
 
-                <!-- Projeto 3 -->
+                <!-- Projeto 4 -->
                 <div class="project-card">
-                    <img src="images/projetos/ddm.png" alt="DDM Engenharia Civil" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=DDM+Engenharia+Civil'">
+                    <img src="images/projetos/ddmeng.png" alt="DDM Engenharia Civil" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=DDM+Engenharia+Civil'">
                     <div class="project-content">
                         <div>
-                            <h4>🏗️️ DDM Engenharia Civil</h4>
-                            <p>Site profissional para o setor de engenharia. O projeto apresenta portfólio de serviços, seções sobre expertise da empresa e integração de contato para geração de leads.</p>
+                            <h4>🏗️ DDM Engenharia Civil</h4>
+                            <p>Site corporativo voltado para conversão de leads e portfólio de serviços.</p>
                             <div class="project-tech-stack">HTML • CSS • JavaScript • PHP</div>
                             <ul class="project-diff-list">
-                                <li>Design orientado à conversão de leads</li>
-                                <li>Seções bem organizadas destacando serviços</li>
-                                <li>Ênfase em clareza visual e performance</li>
+                                <li>Estrutura otimizada para conversão</li>
+                                <li>Apresentação clara de portfólio</li>
+                                <li>Performance e clareza visual</li>
                             </ul>
                         </div>
                         <div>
@@ -2116,18 +1796,18 @@
                     </div>
                 </div>
 
-                <!-- Projeto 4 -->
+                <!-- Projeto 5 -->
                 <div class="project-card">
-                    <img src="images/projetos/rrf.png" alt="RRF Soluções em Energia" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=RRF+Soluções+em+Energia'">
+                    <img src="images/projetos/rrfsolucoes.png" alt="RRF Soluções em Energia" class="project-thumbnail" onerror="this.src='https://via.placeholder.com/600x350/18181c/ef4444?text=RRF+Soluções+em+Energia'">
                     <div class="project-content">
                         <div>
                             <h4>⚡ RRF Soluções em Energia</h4>
-                            <p>Website corporativo para a RRF Soluções, com foco em apresentar soluções em elétrica e infraestrutura nacional. Projeto com visual profissional e foco em identidade da marca.</p>
+                            <p>Plataforma web institucional para o setor de elétrica e infraestrutura.</p>
                             <div class="project-tech-stack">HTML • CSS • JavaScript • PHP</div>
                             <ul class="project-diff-list">
-                                <li>Interface moderna com foco na marca</li>
-                                <li>Estrutura de conteúdo clara e organizada</li>
-                                <li>Totalmente adaptado para dispositivos móveis</li>
+                                <li>Identidade visual corporativa forte</li>
+                                <li>Totalmente adaptado para mobile</li>
+                                <li>Arquitetura em servidor local XAMPP</li>
                             </ul>
                         </div>
                         <div>
@@ -2140,42 +1820,28 @@
             </div>
         </section>
 
-        <!-- Modal para Visualização Expandida de Certificados -->
-        <div class="modal-overlay" id="modal-cert" onclick="closeModalOnOutside(event, 'modal-cert')">
-            <div class="modal-box">
-                <button class="modal-close" onclick="closeModal('modal-cert')"><i class="fa-solid fa-xmark"></i></button>
-                <div class="modal-title" id="cert-modal-title">Título do Certificado</div>
-                <div class="modal-description">Comprovante(s) oficial(is) vinculado(s):</div>
-                <div class="cert-gallery" id="cert-modal-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 15px;">
-                    <!-- Inserido dinamicamente -->
-                </div>
-                <!-- Container opcional para o link autenticado -->
-                <div id="cert-modal-link-container" style="margin-top: 20px;"></div>
-            </div>
-        </div>
-
         <!-- Contato -->
         <section id="contato" class="contact-box">
             <h2>Vamos conversar?</h2>
             <p>Estou à disposição para colaborar com soluções em Tecnologia da Informação e Análise de Dados.</p>
 
             <div class="contact-grid">
-                <a href="javascript:void(0)" onclick="copyEmail()" class="contact-card">
+                <a href="mailto:Jhonatanlimacoelho25@gmail.com" class="contact-card">
                     <i class="fa-solid fa-envelope"></i>
                     <h4>E-mail</h4>
-                    <p>Clique para copiar</p>
+                    <p>Jhonatanlimacoelho25@gmail.com</p>
                 </a>
 
-                <a href="https://linkedin.com/in/jhonatanlima25" target="_blank" class="contact-card">
+                <a href="https://www.linkedin.com/in/jhonatanlima25/" target="_blank" class="contact-card">
                     <i class="fa-brands fa-linkedin"></i>
                     <h4>LinkedIn</h4>
                     <p>in/jhonatanlima25</p>
                 </a>
 
-                <a href="https://github.com/jhonatanlima25" target="_blank" class="contact-card">
+                <a href="https://github.com/Jheex" target="_blank" class="contact-card">
                     <i class="fa-brands fa-github"></i>
                     <h4>GitHub</h4>
-                    <p>@jhonatanlima25</p>
+                    <p>@Jheex</p>
                 </a>
 
                 <a href="https://wa.me/5511981382542" target="_blank" class="contact-card">
@@ -2192,8 +1858,6 @@
         <p>&copy; 2026 Jhonatan Lima Coelho. Todos os direitos reservados.</p>
     </footer>
 
-    <div id="toast">E-mail copiado para a área de transferência!</div>
-
     <script>
         const mobileToggle = document.getElementById('mobile-toggle');
         const navMenu = document.getElementById('nav-menu');
@@ -2201,13 +1865,6 @@
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
-
-        function copyEmail() {
-            navigator.clipboard.writeText("Jhonatanlimacoelho25@gmail.com");
-            const toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
-        }
 
         function switchExpTab(event, panelId) {
             document.querySelectorAll('.exp-tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -2225,77 +1882,39 @@
             document.getElementById(panelId).classList.add('active');
         }
 
-        // ==========================================
-        // TOGGLE "VER MAIS" DE CERTIFICADOS
-        // ==========================================
-        let showAllCerts = false;
-        function toggleCertificates() {
-            showAllCerts = !showAllCerts;
-            const hiddenItems = document.querySelectorAll('.cert-row-item.cert-hidden');
-            const btn = document.getElementById('toggle-cert-btn');
+        function switchCertTab(event, panelId) {
+            document.querySelectorAll('.cert-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.cert-tab-panel').forEach(panel => panel.classList.remove('active'));
 
-            hiddenItems.forEach(item => {
-                item.style.display = showAllCerts ? 'flex' : 'none';
-            });
-
-            if (showAllCerts) {
-                btn.innerHTML = '<i class="fa-solid fa-chevron-up"></i> Ver menos';
-            } else {
-                btn.innerHTML = '<i class="fa-solid fa-chevron-down"></i> Ver mais certificados (23 ocultos)';
-                document.getElementById('certificacoes').scrollIntoView({ behavior: 'smooth' });
-            }
+            event.currentTarget.classList.add('active');
+            document.getElementById(panelId).classList.add('active');
         }
 
         // ==========================================
-        // MODAL DE CERTIFICADOS COM LINK AUTENTICADO OPCIONAL
+        // ANIMAÇÃO DE QUEDA DA FOTO & RESTAURAÇÃO
         // ==========================================
-        function openCertModal(title, imagePaths, certUrl) {
-            document.getElementById('cert-modal-title').innerText = title;
-            const gallery = document.getElementById('cert-modal-gallery');
-            gallery.innerHTML = '';
+        const gravityPhoto = document.getElementById('gravity-photo');
+        const restoreContainer = document.getElementById('restore-container');
 
-            imagePaths.forEach(path => {
-                const img = document.createElement('img');
-                img.src = path;
-                img.alt = title;
-                img.style.width = '100%';
-                img.style.height = '200px';
-                img.style.objectFit = 'cover';
-                img.style.borderRadius = '8px';
-                img.style.border = '1px solid var(--card-border)';
-                img.onerror = function() {
-                    this.src = 'https://via.placeholder.com/400x250/18181c/ef4444?text=Certificado';
-                };
-                gallery.appendChild(img);
-            });
+        gravityPhoto.addEventListener('click', () => {
+            gravityPhoto.style.transform = 'translateY(120vh) rotate(45deg)';
+            gravityPhoto.style.opacity = '0';
+            setTimeout(() => {
+                gravityPhoto.style.display = 'none';
+                restoreContainer.classList.add('show');
+            }, 800);
+        });
 
-            // Insere o link autenticado oficial caso exista
-            const linkContainer = document.getElementById('cert-modal-link-container');
-            linkContainer.innerHTML = '';
-            if (certUrl && certUrl.trim() !== '') {
-                const a = document.createElement('a');
-                a.href = certUrl;
-                a.target = '_blank';
-                a.className = 'btn btn-primary';
-                a.style.width = '100%';
-                a.style.justifyContent = 'center';
-                a.innerHTML = '<i class="fa-solid fa-external-link-alt"></i> Acessar Certificado Autenticado Oficial';
-                linkContainer.appendChild(a);
-            }
-
-            document.getElementById('modal-cert').classList.add('active');
+        function restorePhoto() {
+            gravityPhoto.style.display = 'block';
+            gravityPhoto.style.transform = 'translateY(0) rotate(0deg)';
+            gravityPhoto.style.opacity = '1';
+            restoreContainer.classList.remove('show');
         }
 
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
-
-        function closeModalOnOutside(event, id) {
-            if (event.target.id === id) {
-                closeModal(id);
-            }
-        }
-
+        // ==========================================
+        // CANVAS DE PARTÍCULAS DE FUNDO
+        // ==========================================
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
 
