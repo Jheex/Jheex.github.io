@@ -19,7 +19,7 @@
 
 ## 👨‍💻 Sobre mim
 
-Sou profissional de **Tecnologia da Informação**, formado em **Análise e Desenvolvimento de Sistemas** pela UNIP e pós-graduando em **Data Science, Big Data, AI & Data Engineering** pela FIAP. 
+Sou profissional de **Tecnologia da Informação**, formado em **Análise e Desenvolvimento de Sistemas** pela UNIP e graduando em **Data Science, Big Data, AI & Data Engineering** pela FIAP. 
 
 Atualmente atuo com suporte técnico de Nível 1/2 e infraestrutura na *Anidrol Indústria Química*, unindo a robustez dos sistemas corporativos à agilidade da automação e análise de dados.
 
