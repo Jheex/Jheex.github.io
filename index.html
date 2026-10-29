@@ -751,6 +751,61 @@
             border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
+        .exp-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            
+            /* Limite de altura com scroll customizado */
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 12px;
+        }
+
+        /* Estilização moderna da barra de rolagem (Scrollbar) */
+        .exp-bullets::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .exp-bullets::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+        }
+
+        .exp-bullets::-webkit-scrollbar-thumb {
+            background: rgba(239, 68, 68, 0.3);
+            border-radius: 4px;
+        }
+
+        .exp-bullets::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-red);
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: var(--primary-red);
+            font-size: 0.78rem;
+            font-weight: 600;
+            border-radius: 20px;
+            font-family: var(--font-code);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: 0 0 8px var(--glow-red);
+        }
+
         /* CURSOS E CERTIFICAÇÕES */
         .cert-tabs-container {
             background: var(--card-bg);
@@ -1213,6 +1268,7 @@
     <header>
         <a href="#sobre" class="logo-link">
             <div class="logo">
+                <img src="images/jhonatan/Logotipo.png" alt="Logo Jhonatan Lima" style="width: 50px; height: 50px; object-fit: contain; border-radius: 6px;" onerror="this.style.display='none'">
                 <span class="first-name">Jhonatan</span>
                 <span class="last-name">Lima</span>
             </div>
@@ -1262,7 +1318,7 @@
 
             <div class="hero-photo-wrapper">
                 <div class="hero-photo-frame" id="gravity-photo" title="Clique para derrubar!">
-                    <img src="images/jhonatan/foto.png" alt="Jhonatan Lima Coelho" onerror="this.src='https://via.placeholder.com/450x450/121215/ef4444?text=Jhonatan+Coelho'">
+                    <img src="images/jhonatan/foto.png" alt="Jhonatan Lima Coelho" fetchpriority="high" onerror="this.src='https://via.placeholder.com/450x450/121215/ef4444?text=Jhonatan+Coelho'">
                 </div>
                 <div id="restore-container" class="restore-container">
                     <button class="btn-restore" onclick="restorePhoto()">restaurar Jhonatan.exe</button>
@@ -1283,7 +1339,8 @@
                             <img src="images/faculdades/logotipo/fiap.jpeg" alt="Logotipo FIAP" class="institution-logo-img" onerror="this.src='https://via.placeholder.com/55x55/18181c/ef4444?text=FIAP'">
                             <div class="academic-minimal-info">
                                 <h4>FIAP — Faculdade de Informática e Administração Paulista</h4>
-                                <p>Pós-Graduação (2026 - 2027) • <strong>Data Science - Big Data, AI & Data Engineering</strong></p>
+                                <p>Graduação: Tecnólogo (2026 - 2027)<br>
+                                <strong>Data Science: Big Data, AI & Data Engineering</strong></p>
                             </div>
                         </div>
                         <span class="academic-status status-cursando">Cursando...</span>
@@ -1339,7 +1396,8 @@
                             <img src="images/faculdades/logotipo/unip.jpeg" alt="Logotipo UNIP" class="institution-logo-img" onerror="this.src='https://via.placeholder.com/55x55/18181c/ef4444?text=UNIP'">
                             <div class="academic-minimal-info">
                                 <h4>UNIP — Universidade Paulista</h4>
-                                <p>Tecnólogo (2024 - 2025) • <strong>Análise e Desenvolvimento de Sistemas</strong></p>
+                                <p>Graduação: Tecnólogo (2024 - 2025) <br> 
+                                <strong>Análise e Desenvolvimento de Sistemas</strong></p>
                             </div>
                         </div>
                         <span class="academic-status status-concluido">Concluído</span>
@@ -1399,7 +1457,7 @@
                         <div class="exp-tab-info">
                             <span class="exp-tab-company">Anidrol Indústria Química</span>
                             <span class="exp-tab-role">Auxiliar de TI</span>
-                            <span class="exp-tab-period">2025 - Atual</span>
+                            <span class="exp-tab-period">2026 - Atual</span>
                         </div>
                         <img src="images/empresas/anidrol.png" alt="Anidrol" class="exp-logo-img" onerror="this.src='https://via.placeholder.com/42x42/18181c/ef4444?text=AN'">
                     </button>
@@ -1408,7 +1466,7 @@
                         <div class="exp-tab-info">
                             <span class="exp-tab-company">Anidrol Indústria Química</span>
                             <span class="exp-tab-role">Estagiário de TI</span>
-                            <span class="exp-tab-period">2024 - 2025</span>
+                            <span class="exp-tab-period">2025 - 2026</span>
                         </div>
                         <img src="images/empresas/anidrol.png" alt="Anidrol" class="exp-logo-img" onerror="this.src='https://via.placeholder.com/42x42/18181c/ef4444?text=AN'">
                     </button>
@@ -1417,7 +1475,7 @@
                         <div class="exp-tab-info">
                             <span class="exp-tab-company">YOFC Brasil</span>
                             <span class="exp-tab-role">Estagiário de Logística</span>
-                            <span class="exp-tab-period">2023 - 2024</span>
+                            <span class="exp-tab-period">2024 - 2025</span>
                         </div>
                         <img src="images/empresas/yofc.png" alt="YOFC" class="exp-logo-img" onerror="this.src='https://via.placeholder.com/42x42/18181c/ef4444?text=YO'">
                     </button>
@@ -1426,7 +1484,7 @@
                         <div class="exp-tab-info">
                             <span class="exp-tab-company">YOFC Brasil</span>
                             <span class="exp-tab-role">Aprendiz de Logística</span>
-                            <span class="exp-tab-period">2022 - 2023</span>
+                            <span class="exp-tab-period">2023 - 2024</span>
                         </div>
                         <img src="images/empresas/yofc.png" alt="YOFC" class="exp-logo-img" onerror="this.src='https://via.placeholder.com/42x42/18181c/ef4444?text=YO'">
                     </button>
@@ -1445,16 +1503,36 @@
                             <span class="date-badge">2025 - Atual</span>
                         </div>
                         <ul class="exp-bullets">
-                            <li>Suporte de Nível 1 e 2 para usuários internos na área fabril e administrativa.</li>
-                            <li>Atuação no gerenciamento de redes, manutenção preventiva de equipamentos e rotinas de backup.</li>
-                            <li>Apoio na parametrização e suporte ao ERP corporativo TOTVS Protheus.</li>
+                            <li><b>Manutenção de hardware:</b> diagnóstico e manutenção de computadores e periféricos, substituição de componentes, upgrades e identificação de falhas técnicas.</li>
+                            <li><b>Instalação e configuração de softwares:</b> instalação, atualização e configuração de sistemas operacionais, aplicativos corporativos e ferramentas de trabalho.</li>
+                            <li><b>Suporte técnico:</b> atendimento aos usuários, diagnóstico e resolução de problemas de hardware, software, conectividade e acesso aos sistemas.</li>
+                            <li><b>Infraestrutura de redes:</b> configuração e troubleshooting de redes locais, conectividade, compartilhamentos e recursos de rede.</li>
+                            <li><b>Segurança da Informação:</b> administração de acessos e permissões, controle de contas de usuários, aplicação de boas práticas de segurança e apoio à proteção de dados corporativos.</li>
+                            <li><b>Suporte a sistemas ERP:</b> atendimento e resolução de problemas relacionados aos sistemas AOKI E2Corp e OM3 (Bitsoftware), incluindo suporte aos usuários e acompanhamento de ocorrências.</li>
+                            <li><b>Desenvolvimento e programação:</b> criação e manutenção de aplicações, páginas web, ferramentas internas e soluções para atender às necessidades da empresa.</li>
+                            <li><b>Automação de processos:</b> desenvolvimento de soluções para otimização de rotinas administrativas e operacionais, reduzindo tarefas manuais e melhorando a eficiência dos processos.</li>
+                            <li><b>Administração de ambientes corporativos:</b> suporte a ferramentas, sistemas e recursos tecnológicos utilizados pelos departamentos da empresa.</li>
+                            <li><b>Criação de artes e comunicação visual:</b> desenvolvimento de banners, logotipos, publicações institucionais, assinaturas de e-mail e materiais gráficos para comunicação interna e externa.</li>
+                            <li><b>Gestão de recursos tecnológicos:</b> apoio ao controle de equipamentos, softwares, licenças, acessos e inventário de TI.</li>
+                            <li><b>Documentação técnica:</b> elaboração de procedimentos, registros de atendimento, instruções de uso e documentação de processos de TI.</li>
                         </ul>
                         <div class="exp-tags">
-                            <span class="tag">Suporte N1/N2</span>
-                            <span class="tag">Redes</span>
-                            <span class="tag">TOTVS Protheus</span>
-                            <span class="tag">Backup</span>
+                            <span class="tag">Suporte Técnico</span>
+                            <span class="tag">Infraestrutura</span>
                             <span class="tag">Hardware</span>
+                            <span class="tag">Redes De Computadores</span>
+                            <span class="tag">Programação</span>
+                            <span class="tag">Desenvolvimento Web</span>
+                            <span class="tag">Segurança Da Informação</span>
+                            <span class="tag">Design Gráfico</span>
+                            <span class="tag">Microsoft 365</span>
+                            <span class="tag">Adapta</span>
+                            <span class="tag">Aoki E2Corp</span>
+                            <span class="tag">Bitrix24</span>
+                            <span class="tag">Canva</span>
+                            <span class="tag">GoTo</span>
+                            <span class="tag">Linkus</span>
+                            <span class="tag">OM3</span>
                         </div>
                     </div>
 
@@ -1470,14 +1548,36 @@
                             <span class="date-badge">2024 - 2025</span>
                         </div>
                         <ul class="exp-bullets">
-                            <li>Diagnóstico e resolução de chamados de hardware, sistemas operacionais e periféricos.</li>
-                            <li>Organização do inventário de ativos de TI e configuração de novos computadores no domínio.</li>
+                            <li><b>Manutenção de hardware:</b> diagnóstico e manutenção de computadores e periféricos, substituição de componentes, upgrades e identificação de falhas técnicas.</li>
+                            <li><b>Instalação e configuração de softwares:</b> instalação, atualização e configuração de sistemas operacionais, aplicativos corporativos e ferramentas de trabalho.</li>
+                            <li><b>Suporte técnico:</b> atendimento aos usuários, diagnóstico e resolução de problemas de hardware, software, conectividade e acesso aos sistemas.</li>
+                            <li><b>Infraestrutura de redes:</b> configuração e troubleshooting de redes locais, conectividade, compartilhamentos e recursos de rede.</li>
+                            <li><b>Segurança da Informação:</b> administração de acessos e permissões, controle de contas de usuários, aplicação de boas práticas de segurança e apoio à proteção de dados corporativos.</li>
+                            <li><b>Suporte a sistemas ERP:</b> atendimento e resolução de problemas relacionados aos sistemas AOKI E2Corp e OM3 (Bitsoftware), incluindo suporte aos usuários e acompanhamento de ocorrências.</li>
+                            <li><b>Desenvolvimento e programação:</b> criação e manutenção de aplicações, páginas web, ferramentas internas e soluções para atender às necessidades da empresa.</li>
+                            <li><b>Automação de processos:</b> desenvolvimento de soluções para otimização de rotinas administrativas e operacionais, reduzindo tarefas manuais e melhorando a eficiência dos processos.</li>
+                            <li><b>Administração de ambientes corporativos:</b> suporte a ferramentas, sistemas e recursos tecnológicos utilizados pelos departamentos da empresa.</li>
+                            <li><b>Criação de artes e comunicação visual:</b> desenvolvimento de banners, logotipos, publicações institucionais, assinaturas de e-mail e materiais gráficos para comunicação interna e externa.</li>
+                            <li><b>Gestão de recursos tecnológicos:</b> apoio ao controle de equipamentos, softwares, licenças, acessos e inventário de TI.</li>
+                            <li><b>Documentação técnica:</b> elaboração de procedimentos, registros de atendimento, instruções de uso e documentação de processos de TI.</li>
                         </ul>
                         <div class="exp-tags">
-                            <span class="tag">Help Desk</span>
+                            <span class="tag">Suporte Técnico</span>
                             <span class="tag">Infraestrutura</span>
-                            <span class="tag">Windows</span>
-                            <span class="tag">Inventário de Ativos</span>
+                            <span class="tag">Hardware</span>
+                            <span class="tag">Redes De Computadores</span>
+                            <span class="tag">Programação</span>
+                            <span class="tag">Desenvolvimento Web</span>
+                            <span class="tag">Segurança Da Informação</span>
+                            <span class="tag">Design Gráfico</span>
+                            <span class="tag">Microsoft 365</span>
+                            <span class="tag">Adapta</span>
+                            <span class="tag">Aoki E2Corp</span>
+                            <span class="tag">Bitrix24</span>
+                            <span class="tag">Canva</span>
+                            <span class="tag">GoTo</span>
+                            <span class="tag">Linkus</span>
+                            <span class="tag">OM3</span>
                         </div>
                     </div>
 
@@ -1493,14 +1593,21 @@
                             <span class="date-badge">2023 - 2024</span>
                         </div>
                         <ul class="exp-bullets">
-                            <li>Acompanhamento de estoque, auditoria de dados de entrada/saída e suporte operacional via ERP.</li>
-                            <li>Criação de relatórios e planilhas automatizadas no Excel para controle da operação.</li>
+                            <li>Realização de cotações de frete e análise de valores e condições de transporte.</li>
+                            <li>Emissão de notas fiscais, romaneios e minutas de transporte.</li>
+                            <li>Organização, digitalização e arquivamento de documentos fiscais, administrativos e de transporte.</li>
+                            <li>Elaboração e acompanhamento de solicitações de pagamento e despesas relacionadas à logística.</li>
+                            <li>Utilização do sistema TOTVS ERP para apoio às rotinas operacionais e administrativas da área.</li>
+                            <li>Elaboração e atualização de planilhas de controle logístico, utilizando Excel avançado, fórmulas e macros VBA.</li>
+                            <li>Automação de processos e tarefas administrativas, visando otimizar rotinas, reduzir atividades manuais e aumentar a eficiência operacional.</li>
                         </ul>
                         <div class="exp-tags">
-                            <span class="tag">Excel Avançado</span>
-                            <span class="tag">ERP</span>
-                            <span class="tag">Controle de Estoque</span>
-                            <span class="tag">Auditoria de Dados</span>
+                            <span class="tag">Word</span>
+                            <span class="tag">Excel</span>
+                            <span class="tag">PowerPoint</span>
+                            <span class="tag">Outlook</span>
+                            <span class="tag">Teams</span>
+                            <span class="tag">Totvs Protheus</span>
                         </div>
                     </div>
 
@@ -1516,12 +1623,21 @@
                             <span class="date-badge">2022 - 2023</span>
                         </div>
                         <ul class="exp-bullets">
-                            <li>Suporte administrativo, conferência de documentações e lançamento de registros no sistema.</li>
+                            <li>Realização de cotações de frete e análise de valores e condições de transporte.</li>
+                            <li>Emissão de notas fiscais, romaneios e minutas de transporte.</li>
+                            <li>Organização, digitalização e arquivamento de documentos fiscais, administrativos e de transporte.</li>
+                            <li>Elaboração e acompanhamento de solicitações de pagamento e despesas relacionadas à logística.</li>
+                            <li>Utilização do sistema TOTVS ERP para apoio às rotinas operacionais e administrativas da área.</li>
+                            <li>Elaboração e atualização de planilhas de controle logístico, utilizando Excel avançado, fórmulas e macros VBA.</li>
+                            <li>Automação de processos e tarefas administrativas, visando otimizar rotinas, reduzir atividades manuais e aumentar a eficiência operacional.</li>
                         </ul>
                         <div class="exp-tags">
-                            <span class="tag">Suporte Administrativo</span>
-                            <span class="tag">Lançamento de Dados</span>
-                            <span class="tag">Conferência</span>
+                            <span class="tag">Word</span>
+                            <span class="tag">Excel</span>
+                            <span class="tag">PowerPoint</span>
+                            <span class="tag">Outlook</span>
+                            <span class="tag">Teams</span>
+                            <span class="tag">Totvs Protheus</span>
                         </div>
                     </div>
                 </div>
@@ -1829,25 +1945,21 @@
                 <a href="mailto:Jhonatanlimacoelho25@gmail.com" class="contact-card">
                     <i class="fa-solid fa-envelope"></i>
                     <h4>E-mail</h4>
-                    <p>Jhonatanlimacoelho25@gmail.com</p>
                 </a>
 
                 <a href="https://www.linkedin.com/in/jhonatanlima25/" target="_blank" class="contact-card">
                     <i class="fa-brands fa-linkedin"></i>
                     <h4>LinkedIn</h4>
-                    <p>in/jhonatanlima25</p>
                 </a>
 
                 <a href="https://github.com/Jheex" target="_blank" class="contact-card">
                     <i class="fa-brands fa-github"></i>
                     <h4>GitHub</h4>
-                    <p>@Jheex</p>
                 </a>
 
                 <a href="https://wa.me/5511981382542" target="_blank" class="contact-card">
                     <i class="fa-brands fa-whatsapp"></i>
                     <h4>WhatsApp</h4>
-                    <p>(11) 98138-2542</p>
                 </a>
             </div>
         </section>
